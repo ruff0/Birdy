@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9060" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="116" id="5Ay-kj-v19" customClass="BirdCell">
+            <rect key="frame" x="0.0" y="0.0" width="400" height="116"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="5Ay-kj-v19" id="j04-ix-ZRd">
+                <rect key="frame" x="0.0" y="0.0" width="400" height="115"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IyX-tU-MeU">
+                        <rect key="frame" x="8" y="8" width="0.0" height="50"/>
+                        <animations/>
+                        <constraints>
+                            <constraint firstAttribute="height" relation="lessThanOrEqual" constant="50" id="mQc-Th-P5Y"/>
+                            <constraint firstAttribute="width" relation="lessThanOrEqual" constant="50" id="oq6-Fe-gC7"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Latin name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jR2-ke-BWb">
+                        <rect key="frame" x="28" y="38" width="62" height="15"/>
+                        <animations/>
+                        <fontDescription key="fontDescription" type="italicSystem" pointSize="12"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Bird name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mW0-Lf-wj3">
+                        <rect key="frame" x="28" y="13" width="81" height="22"/>
+                        <animations/>
+                        <fontDescription key="fontDescription" type="system" weight="thin" pointSize="18"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <animations/>
+                <constraints>
+                    <constraint firstItem="jR2-ke-BWb" firstAttribute="leading" secondItem="mW0-Lf-wj3" secondAttribute="leading" id="KhE-Q7-5m4"/>
+                    <constraint firstItem="IyX-tU-MeU" firstAttribute="top" secondItem="j04-ix-ZRd" secondAttribute="topMargin" id="QZW-Lk-ew3"/>
+                    <constraint firstItem="mW0-Lf-wj3" firstAttribute="top" secondItem="j04-ix-ZRd" secondAttribute="topMargin" constant="2" id="Rpz-1g-5nO"/>
+                    <constraint firstItem="jR2-ke-BWb" firstAttribute="top" secondItem="mW0-Lf-wj3" secondAttribute="bottom" constant="5" id="a8G-B6-kVv"/>
+                    <constraint firstItem="IyX-tU-MeU" firstAttribute="leading" secondItem="j04-ix-ZRd" secondAttribute="leadingMargin" id="h2H-QZ-jeP"/>
+                    <constraint firstItem="mW0-Lf-wj3" firstAttribute="leading" secondItem="IyX-tU-MeU" secondAttribute="trailing" constant="20" id="xgU-nC-97p"/>
+                </constraints>
+            </tableViewCellContentView>
+            <animations/>
+            <connections>
+                <outlet property="birdCellImageView" destination="IyX-tU-MeU" id="8aQ-9g-v9u"/>
+                <outlet property="birdCellLatinNameLabel" destination="jR2-ke-BWb" id="Lhc-CU-R6r"/>
+                <outlet property="birdCellNameLabel" destination="mW0-Lf-wj3" id="9QB-hz-EKW"/>
+            </connections>
+            <point key="canvasLocation" x="308" y="521"/>
+        </tableViewCell>
+    </objects>
+</document>
