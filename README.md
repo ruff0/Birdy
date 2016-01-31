@@ -25,6 +25,8 @@ Users are allowed to add a new species that still does not exist in the database
 
 -   On the bird details page users are allowed to change the bird picture and add new location where the bird has been observed;
 
+hints:
+http://stackoverflow.com/questions/1219779/how-to-add-a-right-button-to-a-uinavigationcontroller
 -   Each bird will have map (locations) screen, where user can see the places, where the bird has been observed;
 
 -   Add bird screen allows the user to add new bird species to the database, specifying name, Latin name, writing short description and uploading photo. The coordinates are taken automatically;
