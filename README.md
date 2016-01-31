@@ -15,7 +15,7 @@ Birdy application is a native iOS app for iPhone and iPad that allows the user t
 
 -   Places where the bird has been observed;
 
-Users are allowed to add a new species that does not exist still in the database. They also can change the bird picture and can add new location to the database, where the bird has been observed.
+Users are allowed to add a new species that still does not exist in the database. They also can change the bird picture and can add new location to the database, where the bird has been observed.
 
 #### Major functionality of Birdy
 
