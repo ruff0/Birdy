@@ -19,6 +19,8 @@
 		DA5901641C5E803F002A173F /* BirdyData.m in Sources */ = {isa = PBXBuildFile; fileRef = DA5901631C5E803F002A173F /* BirdyData.m */; };
 		DA5901681C5E906F002A173F /* CellCustomView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA5901671C5E906F002A173F /* CellCustomView.xib */; };
 		DA59016B1C5E9437002A173F /* BirdCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DA59016A1C5E9437002A173F /* BirdCell.m */; };
+		DA6765C31C5FD55F00B4FD6F /* BirdsContentController.m in Sources */ = {isa = PBXBuildFile; fileRef = DA6765C21C5FD55F00B4FD6F /* BirdsContentController.m */; };
+		DA6765C61C5FDCE600B4FD6F /* BirdController.m in Sources */ = {isa = PBXBuildFile; fileRef = DA6765C51C5FDCE600B4FD6F /* BirdController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,6 +45,10 @@
 		DA5901671C5E906F002A173F /* CellCustomView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CellCustomView.xib; sourceTree = "<group>"; };
 		DA5901691C5E9437002A173F /* BirdCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BirdCell.h; sourceTree = "<group>"; };
 		DA59016A1C5E9437002A173F /* BirdCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BirdCell.m; sourceTree = "<group>"; };
+		DA6765C11C5FD55F00B4FD6F /* BirdsContentController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BirdsContentController.h; sourceTree = "<group>"; };
+		DA6765C21C5FD55F00B4FD6F /* BirdsContentController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BirdsContentController.m; sourceTree = "<group>"; };
+		DA6765C41C5FDCE600B4FD6F /* BirdController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BirdController.h; sourceTree = "<group>"; };
+		DA6765C51C5FDCE600B4FD6F /* BirdController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BirdController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +113,10 @@
 				DA59015C1C5E5643002A173F /* BirdDetailsViewController.m */,
 				DA59015E1C5E7D07002A173F /* AddBirdViewController.h */,
 				DA59015F1C5E7D07002A173F /* AddBirdViewController.m */,
+				DA6765C11C5FD55F00B4FD6F /* BirdsContentController.h */,
+				DA6765C21C5FD55F00B4FD6F /* BirdsContentController.m */,
+				DA6765C41C5FDCE600B4FD6F /* BirdController.h */,
+				DA6765C51C5FDCE600B4FD6F /* BirdController.m */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -210,9 +220,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DA6765C61C5FDCE600B4FD6F /* BirdController.m in Sources */,
 				DA5901561C5E44FA002A173F /* BirdsListViewController.m in Sources */,
 				DA5901601C5E7D07002A173F /* AddBirdViewController.m in Sources */,
 				DA5901411C5E4424002A173F /* AppDelegate.m in Sources */,
+				DA6765C31C5FD55F00B4FD6F /* BirdsContentController.m in Sources */,
 				DA59015A1C5E4B63002A173F /* Bird.m in Sources */,
 				DA59015D1C5E5643002A173F /* BirdDetailsViewController.m in Sources */,
 				DA5901641C5E803F002A173F /* BirdyData.m in Sources */,

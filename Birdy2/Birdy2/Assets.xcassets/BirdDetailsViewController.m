@@ -19,11 +19,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
-    
-    self.scrollView.pagingEnabled = YES;
-    self.scrollView.showsHorizontalScrollIndicator = NO;
-    self.scrollView.delegate = self;
     
     self.birdNameLable.text = self.bird.name;
     self.birdLatinNameLable.text = self.bird.latinName;

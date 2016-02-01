@@ -1,6 +1,7 @@
 #import "BirdsListViewController.h"
 #import "BIrd.h"
 #import "BirdDetailsViewController.h"
+#import "BirdsContentController.h"
 #import "AppDelegate.h"
 #import "AddBirdViewController.h"
 #import "BirdCell.h"
@@ -97,9 +98,10 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(nonnull NSIndexPath *)indexPath{
     
     Bird *currentBird = [self.searchResults objectAtIndex:indexPath.row];
-    NSString *detailsSb = @"detailsStoryBoard";
-    BirdDetailsViewController *detailsController = [self.storyboard instantiateViewControllerWithIdentifier:detailsSb];
-    detailsController.bird = currentBird;
+    
+    NSString *detailsSb = @"birdsDetailsStoryBoard";
+    BirdsContentController *detailsController = [self.storyboard instantiateViewControllerWithIdentifier:detailsSb];
+    detailsController.birdsArray = self.searchResults;
     [self.navigationController pushViewController:detailsController animated:YES];
 }
 
@@ -133,7 +135,7 @@
         self.birds = [[NSMutableArray alloc] init];
     }
     
-    NSString *detailsSb = @"addPhoneStoryBoard";
+    NSString *detailsSb = @"addBirdStoryBoard";
     AddBirdViewController *addBirdController = [self.storyboard instantiateViewControllerWithIdentifier:detailsSb];
     [self.navigationController pushViewController:addBirdController animated:YES];
 
