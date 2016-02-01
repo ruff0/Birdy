@@ -1,0 +1,374 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		DA59013E1C5E4424002A173F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = DA59013D1C5E4424002A173F /* main.m */; };
+		DA5901411C5E4424002A173F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DA5901401C5E4424002A173F /* AppDelegate.m */; };
+		DA5901471C5E4424002A173F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DA5901451C5E4424002A173F /* Main.storyboard */; };
+		DA5901491C5E4424002A173F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DA5901481C5E4424002A173F /* Assets.xcassets */; };
+		DA59014C1C5E4424002A173F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DA59014A1C5E4424002A173F /* LaunchScreen.storyboard */; };
+		DA5901561C5E44FA002A173F /* BirdsListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DA5901551C5E44FA002A173F /* BirdsListViewController.m */; };
+		DA59015A1C5E4B63002A173F /* Bird.m in Sources */ = {isa = PBXBuildFile; fileRef = DA5901591C5E4B63002A173F /* Bird.m */; };
+		DA59015D1C5E5643002A173F /* BirdDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DA59015C1C5E5643002A173F /* BirdDetailsViewController.m */; };
+		DA5901601C5E7D07002A173F /* AddBirdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DA59015F1C5E7D07002A173F /* AddBirdViewController.m */; };
+		DA5901641C5E803F002A173F /* BirdyData.m in Sources */ = {isa = PBXBuildFile; fileRef = DA5901631C5E803F002A173F /* BirdyData.m */; };
+		DA5901681C5E906F002A173F /* CellCustomView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA5901671C5E906F002A173F /* CellCustomView.xib */; };
+		DA59016B1C5E9437002A173F /* BirdCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DA59016A1C5E9437002A173F /* BirdCell.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		DA5901391C5E4423002A173F /* Birdy2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Birdy2.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		DA59013D1C5E4424002A173F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		DA59013F1C5E4424002A173F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		DA5901401C5E4424002A173F /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		DA5901461C5E4424002A173F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		DA5901481C5E4424002A173F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		DA59014B1C5E4424002A173F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		DA59014D1C5E4424002A173F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DA5901541C5E44FA002A173F /* BirdsListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BirdsListViewController.h; sourceTree = "<group>"; };
+		DA5901551C5E44FA002A173F /* BirdsListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BirdsListViewController.m; sourceTree = "<group>"; };
+		DA5901581C5E4B63002A173F /* Bird.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Bird.h; sourceTree = "<group>"; };
+		DA5901591C5E4B63002A173F /* Bird.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Bird.m; sourceTree = "<group>"; };
+		DA59015B1C5E5643002A173F /* BirdDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BirdDetailsViewController.h; path = Assets.xcassets/BirdDetailsViewController.h; sourceTree = "<group>"; };
+		DA59015C1C5E5643002A173F /* BirdDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BirdDetailsViewController.m; path = Assets.xcassets/BirdDetailsViewController.m; sourceTree = "<group>"; };
+		DA59015E1C5E7D07002A173F /* AddBirdViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddBirdViewController.h; sourceTree = "<group>"; };
+		DA59015F1C5E7D07002A173F /* AddBirdViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddBirdViewController.m; sourceTree = "<group>"; };
+		DA5901621C5E803F002A173F /* BirdyData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BirdyData.h; sourceTree = "<group>"; };
+		DA5901631C5E803F002A173F /* BirdyData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BirdyData.m; sourceTree = "<group>"; };
+		DA5901671C5E906F002A173F /* CellCustomView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CellCustomView.xib; sourceTree = "<group>"; };
+		DA5901691C5E9437002A173F /* BirdCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BirdCell.h; sourceTree = "<group>"; };
+		DA59016A1C5E9437002A173F /* BirdCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BirdCell.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		DA5901361C5E4423002A173F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		DA5901301C5E4423002A173F = {
+			isa = PBXGroup;
+			children = (
+				DA59013B1C5E4423002A173F /* Birdy2 */,
+				DA59013A1C5E4423002A173F /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		DA59013A1C5E4423002A173F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				DA5901391C5E4423002A173F /* Birdy2.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		DA59013B1C5E4423002A173F /* Birdy2 */ = {
+			isa = PBXGroup;
+			children = (
+				DA5901661C5E9058002A173F /* Views */,
+				DA5901611C5E8011002A173F /* Data */,
+				DA5901571C5E4B42002A173F /* Models */,
+				DA5901531C5E44A5002A173F /* ViewControllers */,
+				DA59013F1C5E4424002A173F /* AppDelegate.h */,
+				DA5901401C5E4424002A173F /* AppDelegate.m */,
+				DA5901451C5E4424002A173F /* Main.storyboard */,
+				DA5901481C5E4424002A173F /* Assets.xcassets */,
+				DA59014A1C5E4424002A173F /* LaunchScreen.storyboard */,
+				DA59014D1C5E4424002A173F /* Info.plist */,
+				DA59013C1C5E4424002A173F /* Supporting Files */,
+			);
+			path = Birdy2;
+			sourceTree = "<group>";
+		};
+		DA59013C1C5E4424002A173F /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				DA59013D1C5E4424002A173F /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		DA5901531C5E44A5002A173F /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				DA5901541C5E44FA002A173F /* BirdsListViewController.h */,
+				DA5901551C5E44FA002A173F /* BirdsListViewController.m */,
+				DA59015B1C5E5643002A173F /* BirdDetailsViewController.h */,
+				DA59015C1C5E5643002A173F /* BirdDetailsViewController.m */,
+				DA59015E1C5E7D07002A173F /* AddBirdViewController.h */,
+				DA59015F1C5E7D07002A173F /* AddBirdViewController.m */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		DA5901571C5E4B42002A173F /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				DA5901581C5E4B63002A173F /* Bird.h */,
+				DA5901591C5E4B63002A173F /* Bird.m */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		DA5901611C5E8011002A173F /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				DA5901621C5E803F002A173F /* BirdyData.h */,
+				DA5901631C5E803F002A173F /* BirdyData.m */,
+			);
+			name = Data;
+			sourceTree = "<group>";
+		};
+		DA5901661C5E9058002A173F /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				DA5901671C5E906F002A173F /* CellCustomView.xib */,
+				DA5901691C5E9437002A173F /* BirdCell.h */,
+				DA59016A1C5E9437002A173F /* BirdCell.m */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		DA5901381C5E4423002A173F /* Birdy2 */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DA5901501C5E4424002A173F /* Build configuration list for PBXNativeTarget "Birdy2" */;
+			buildPhases = (
+				DA5901351C5E4423002A173F /* Sources */,
+				DA5901361C5E4423002A173F /* Frameworks */,
+				DA5901371C5E4423002A173F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Birdy2;
+			productName = Birdy2;
+			productReference = DA5901391C5E4423002A173F /* Birdy2.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		DA5901311C5E4423002A173F /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0710;
+				ORGANIZATIONNAME = veso;
+				TargetAttributes = {
+					DA5901381C5E4423002A173F = {
+						CreatedOnToolsVersion = 7.1.1;
+					};
+				};
+			};
+			buildConfigurationList = DA5901341C5E4423002A173F /* Build configuration list for PBXProject "Birdy2" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = DA5901301C5E4423002A173F;
+			productRefGroup = DA59013A1C5E4423002A173F /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				DA5901381C5E4423002A173F /* Birdy2 */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		DA5901371C5E4423002A173F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DA59014C1C5E4424002A173F /* LaunchScreen.storyboard in Resources */,
+				DA5901681C5E906F002A173F /* CellCustomView.xib in Resources */,
+				DA5901491C5E4424002A173F /* Assets.xcassets in Resources */,
+				DA5901471C5E4424002A173F /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		DA5901351C5E4423002A173F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DA5901561C5E44FA002A173F /* BirdsListViewController.m in Sources */,
+				DA5901601C5E7D07002A173F /* AddBirdViewController.m in Sources */,
+				DA5901411C5E4424002A173F /* AppDelegate.m in Sources */,
+				DA59015A1C5E4B63002A173F /* Bird.m in Sources */,
+				DA59015D1C5E5643002A173F /* BirdDetailsViewController.m in Sources */,
+				DA5901641C5E803F002A173F /* BirdyData.m in Sources */,
+				DA59016B1C5E9437002A173F /* BirdCell.m in Sources */,
+				DA59013E1C5E4424002A173F /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		DA5901451C5E4424002A173F /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				DA5901461C5E4424002A173F /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		DA59014A1C5E4424002A173F /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				DA59014B1C5E4424002A173F /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		DA59014E1C5E4424002A173F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		DA59014F1C5E4424002A173F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		DA5901511C5E4424002A173F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = Birdy2/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = home.Birdy2;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		DA5901521C5E4424002A173F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = Birdy2/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = home.Birdy2;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		DA5901341C5E4423002A173F /* Build configuration list for PBXProject "Birdy2" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DA59014E1C5E4424002A173F /* Debug */,
+				DA59014F1C5E4424002A173F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DA5901501C5E4424002A173F /* Build configuration list for PBXNativeTarget "Birdy2" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DA5901511C5E4424002A173F /* Debug */,
+				DA5901521C5E4424002A173F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = DA5901311C5E4423002A173F /* Project object */;
+}

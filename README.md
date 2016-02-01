@@ -3,7 +3,7 @@ Birdy
 
 #### Bird catalogue iOS app
 
-Birdy application is a native iOS app for iPhone and iPad that allows the user to view browse and add information to a bird register database. The register contains information about bird species and the location where they have been observed. The database keeps a number of characteristics for each bird:
+Birdy application is a native iOS app for iPhone that allows the user to view browse and add information to a bird register database. The register contains information about bird species and the location where they have been observed. The database keeps a number of characteristics for each bird:
 
 -   Name;
 
