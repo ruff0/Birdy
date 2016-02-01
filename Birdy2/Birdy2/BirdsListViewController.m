@@ -5,9 +5,19 @@
 #import "AddBirdViewController.h"
 #import "BirdCell.h"
 
-@interface BirdsListViewController ()
+@interface BirdsListViewController () <UISearchBarDelegate, UISearchControllerDelegate, UISearchResultsUpdating>
+
+@property (nonatomic, strong) UISearchController *searchController;
+@property (nonatomic, strong) NSMutableArray *searchResults;
 
 @end
+
+// working with JSON (file in this case)
+// NSString *path = [[NSBundle mainBundle] pathForResource:@"airlineData" ofType:@"json"];
+// NSData *data = [NSData dataWithContentsOfFile:path];
+// NSError *error;
+// NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:data options:0 error:&error];
+// self.airlines = dict[@"airlines"];
 
 @implementation BirdsListViewController
 
@@ -18,9 +28,19 @@
     
     AppDelegate *delegate = [UIApplication sharedApplication].delegate;
     self.birds = [delegate.data allBirds];
+    self.searchResults = [self.birds mutableCopy];
     
     UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(insertNewBird)];
     self.navigationItem.rightBarButtonItem = addButton;
+    
+    self.searchController = [[UISearchController alloc] initWithSearchResultsController:nil];
+    self.searchController.searchResultsUpdater = self;
+    self.searchController.dimsBackgroundDuringPresentation = NO;
+    self.searchController.searchBar.delegate = self;
+    
+    self.tableView.tableHeaderView = self.searchController.searchBar;
+    self.definesPresentationContext = YES;
+    [self.searchController.searchBar sizeToFit];
 }
 
 -(void)viewWillAppear:(BOOL)animated{
@@ -43,6 +63,11 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    
+    if (self.searchResults != nil && self.searchResults.count > 0) {
+        return self.searchResults.count;
+    }
+    
     return self.birds.count;
 }
 
@@ -55,15 +80,11 @@
     if (cell == NULL) {
         
         cell = [[[NSBundle mainBundle] loadNibNamed:@"CellCustomView" owner:self options:nil] objectAtIndex:0];
-        
-        
-        
-        // cell = [[UITableViewCell alloc] initWithStyle:(UITableViewCellStyleDefault) reuseIdentifier:(cellIdentyfier)];
     }
     
-    cell.birdCellNameLabel.text = [[self.birds objectAtIndex:indexPath.row] name];
-    cell.birdCellLatinNameLabel.text = [[self.birds objectAtIndex:indexPath.row] latinName];
-    NSString *imageUrl = [[self.birds objectAtIndex:indexPath.row] pictureUrl];
+    cell.birdCellNameLabel.text = [[self.searchResults objectAtIndex:indexPath.row] name];
+    cell.birdCellLatinNameLabel.text = [[self.searchResults objectAtIndex:indexPath.row] latinName];
+    NSString *imageUrl = [[self.searchResults objectAtIndex:indexPath.row] pictureUrl];
     cell.birdCellImageView.image = [UIImage imageNamed:imageUrl];
     cell.birdCellImageView.contentMode = UIViewContentModeScaleAspectFit;
     return cell;
@@ -73,57 +94,38 @@
     return 64;
 }
 
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
-
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(nonnull NSIndexPath *)indexPath{
     
-    Bird *currentBird = [self.birds objectAtIndex:indexPath.row];
+    Bird *currentBird = [self.searchResults objectAtIndex:indexPath.row];
     NSString *detailsSb = @"detailsStoryBoard";
     BirdDetailsViewController *detailsController = [self.storyboard instantiateViewControllerWithIdentifier:detailsSb];
     detailsController.bird = currentBird;
     [self.navigationController pushViewController:detailsController animated:YES];
+}
+
+- (void)updateSearchResultsForSearchController:(UISearchController *)searchController {
+    
+    NSString *searchString = self.searchController.searchBar.text;
+    
+    
+    [self updateFilteredContentForBirdName:searchString];
+    
+    [self.tableView reloadData];
+}
+
+- (void)updateFilteredContentForBirdName:(NSString *)newName {
+    if (newName == nil || [newName length] == 0) {
+        self.searchResults = [self.birds mutableCopy];
+    } else {
+        NSMutableArray *searchResults = [[NSMutableArray alloc] init];
+        for (Bird *bird in self.birds) {
+            if ([[bird.name lowercaseString] containsString:[newName lowercaseString]]) {
+                [searchResults addObject:bird];
+            }
+            
+            self.searchResults = searchResults;
+        }
+    }
 }
 
 - (void)insertNewBird {

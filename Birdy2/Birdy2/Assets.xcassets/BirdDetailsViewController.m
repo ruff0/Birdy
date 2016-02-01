@@ -2,7 +2,7 @@
 #import "BirdsListViewController.h"
 #import "AppDelegate.h"
 
-@interface BirdDetailsViewController ()
+@interface BirdDetailsViewController () <UIScrollViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UILabel *birdNameLable;
 
@@ -11,6 +11,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *birdImageView;
 
 @property (weak, nonatomic) IBOutlet UILabel *birdDescriptionLable;
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 
 @end
 
@@ -19,6 +20,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    self.scrollView.pagingEnabled = YES;
+    self.scrollView.showsHorizontalScrollIndicator = NO;
+    self.scrollView.delegate = self;
     
     self.birdNameLable.text = self.bird.name;
     self.birdLatinNameLable.text = self.bird.latinName;
