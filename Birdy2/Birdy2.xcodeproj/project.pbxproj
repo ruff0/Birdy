@@ -14,13 +14,14 @@
 		DA59014C1C5E4424002A173F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DA59014A1C5E4424002A173F /* LaunchScreen.storyboard */; };
 		DA5901561C5E44FA002A173F /* BirdsListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DA5901551C5E44FA002A173F /* BirdsListViewController.m */; };
 		DA59015A1C5E4B63002A173F /* Bird.m in Sources */ = {isa = PBXBuildFile; fileRef = DA5901591C5E4B63002A173F /* Bird.m */; };
-		DA59015D1C5E5643002A173F /* BirdDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DA59015C1C5E5643002A173F /* BirdDetailsViewController.m */; };
 		DA5901601C5E7D07002A173F /* AddBirdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DA59015F1C5E7D07002A173F /* AddBirdViewController.m */; };
 		DA5901641C5E803F002A173F /* BirdyData.m in Sources */ = {isa = PBXBuildFile; fileRef = DA5901631C5E803F002A173F /* BirdyData.m */; };
 		DA5901681C5E906F002A173F /* CellCustomView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA5901671C5E906F002A173F /* CellCustomView.xib */; };
 		DA59016B1C5E9437002A173F /* BirdCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DA59016A1C5E9437002A173F /* BirdCell.m */; };
 		DA6765C31C5FD55F00B4FD6F /* BirdsContentController.m in Sources */ = {isa = PBXBuildFile; fileRef = DA6765C21C5FD55F00B4FD6F /* BirdsContentController.m */; };
 		DA6765C61C5FDCE600B4FD6F /* BirdController.m in Sources */ = {isa = PBXBuildFile; fileRef = DA6765C51C5FDCE600B4FD6F /* BirdController.m */; };
+		DA818C441C61443F00B915A6 /* BirdAndDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = DA818C431C61443F00B915A6 /* BirdAndDictionary.m */; };
+		DA818C471C6146D200B915A6 /* HttpData.m in Sources */ = {isa = PBXBuildFile; fileRef = DA818C461C6146D200B915A6 /* HttpData.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,8 +37,6 @@
 		DA5901551C5E44FA002A173F /* BirdsListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BirdsListViewController.m; sourceTree = "<group>"; };
 		DA5901581C5E4B63002A173F /* Bird.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Bird.h; sourceTree = "<group>"; };
 		DA5901591C5E4B63002A173F /* Bird.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Bird.m; sourceTree = "<group>"; };
-		DA59015B1C5E5643002A173F /* BirdDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BirdDetailsViewController.h; path = Assets.xcassets/BirdDetailsViewController.h; sourceTree = "<group>"; };
-		DA59015C1C5E5643002A173F /* BirdDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BirdDetailsViewController.m; path = Assets.xcassets/BirdDetailsViewController.m; sourceTree = "<group>"; };
 		DA59015E1C5E7D07002A173F /* AddBirdViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddBirdViewController.h; sourceTree = "<group>"; };
 		DA59015F1C5E7D07002A173F /* AddBirdViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddBirdViewController.m; sourceTree = "<group>"; };
 		DA5901621C5E803F002A173F /* BirdyData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BirdyData.h; sourceTree = "<group>"; };
@@ -49,6 +48,10 @@
 		DA6765C21C5FD55F00B4FD6F /* BirdsContentController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BirdsContentController.m; sourceTree = "<group>"; };
 		DA6765C41C5FDCE600B4FD6F /* BirdController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BirdController.h; sourceTree = "<group>"; };
 		DA6765C51C5FDCE600B4FD6F /* BirdController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BirdController.m; sourceTree = "<group>"; };
+		DA818C421C61443F00B915A6 /* BirdAndDictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BirdAndDictionary.h; sourceTree = "<group>"; };
+		DA818C431C61443F00B915A6 /* BirdAndDictionary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BirdAndDictionary.m; sourceTree = "<group>"; };
+		DA818C451C6146D200B915A6 /* HttpData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HttpData.h; sourceTree = "<group>"; };
+		DA818C461C6146D200B915A6 /* HttpData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HttpData.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,8 +112,6 @@
 			children = (
 				DA5901541C5E44FA002A173F /* BirdsListViewController.h */,
 				DA5901551C5E44FA002A173F /* BirdsListViewController.m */,
-				DA59015B1C5E5643002A173F /* BirdDetailsViewController.h */,
-				DA59015C1C5E5643002A173F /* BirdDetailsViewController.m */,
 				DA59015E1C5E7D07002A173F /* AddBirdViewController.h */,
 				DA59015F1C5E7D07002A173F /* AddBirdViewController.m */,
 				DA6765C11C5FD55F00B4FD6F /* BirdsContentController.h */,
@@ -126,6 +127,8 @@
 			children = (
 				DA5901581C5E4B63002A173F /* Bird.h */,
 				DA5901591C5E4B63002A173F /* Bird.m */,
+				DA818C421C61443F00B915A6 /* BirdAndDictionary.h */,
+				DA818C431C61443F00B915A6 /* BirdAndDictionary.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -135,6 +138,8 @@
 			children = (
 				DA5901621C5E803F002A173F /* BirdyData.h */,
 				DA5901631C5E803F002A173F /* BirdyData.m */,
+				DA818C451C6146D200B915A6 /* HttpData.h */,
+				DA818C461C6146D200B915A6 /* HttpData.m */,
 			);
 			name = Data;
 			sourceTree = "<group>";
@@ -226,7 +231,8 @@
 				DA5901411C5E4424002A173F /* AppDelegate.m in Sources */,
 				DA6765C31C5FD55F00B4FD6F /* BirdsContentController.m in Sources */,
 				DA59015A1C5E4B63002A173F /* Bird.m in Sources */,
-				DA59015D1C5E5643002A173F /* BirdDetailsViewController.m in Sources */,
+				DA818C471C6146D200B915A6 /* HttpData.m in Sources */,
+				DA818C441C61443F00B915A6 /* BirdAndDictionary.m in Sources */,
 				DA5901641C5E803F002A173F /* BirdyData.m in Sources */,
 				DA59016B1C5E9437002A173F /* BirdCell.m in Sources */,
 				DA59013E1C5E4424002A173F /* main.m in Sources */,

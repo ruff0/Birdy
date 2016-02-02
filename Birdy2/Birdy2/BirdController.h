@@ -15,7 +15,7 @@
 
 @property (strong, nonatomic) IBOutlet UILabel *birdName;
 @property (weak, nonatomic) IBOutlet UIImageView *birdImageView;
-@property (weak, nonatomic) IBOutlet UILabel *birdDescription;
 @property (weak, nonatomic) IBOutlet UILabel *birdLatinName;
+@property (weak, nonatomic) IBOutlet UITextView *birdDescription;
 
 @end

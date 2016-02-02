@@ -10,8 +10,6 @@
 
 @interface BirdsContentController : UIViewController <UIScrollViewDelegate>
 
-@property (nonatomic, strong) NSArray *birdsArray;
-
-
+@property (nonatomic, strong) NSMutableArray *birdsArray;
 
 @end

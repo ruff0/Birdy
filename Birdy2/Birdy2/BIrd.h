@@ -24,4 +24,11 @@
           withDescription:(NSString*)aDescr
         andWithObservedAt:(NSArray*)aObserved;
 
+- (id)initWithId:(NSString*)aId
+        withName:(NSString*)aName
+   withLatinName:(NSString*)aLatinName
+  withPictureUrl:(NSString*)aUrl
+ withDescription:(NSString*)aDescr
+andWithObservedAt:(NSArray*)aObserved;
+
 @end
