@@ -7,38 +7,23 @@
     return [self initWithId:[dict objectForKey:@"_id"]
                    withName:[dict objectForKey:@"name"]
               withLatinName:[dict objectForKey:@"latinName"]
-             withPictureUrl:[dict objectForKey:@"picture"]
-            withDescription:[dict objectForKey:@"description"]
-          andWithObservedAt:[dict objectForKey:@"coordinates"]];
+                    withPic:[dict objectForKey:@"picture"]
+            withDescription:[dict objectForKey:@"descr"]
+           andWithPositions:[dict objectForKey:@"coordinates"]];
 }
 
--(id)initWithDict: (NSDictionary*) dict andWithPicture: (NSString*) pic {
-    return [self initWithId:[dict objectForKey:@"_id"]
-                   withName:[dict objectForKey:@"name"]
-              withLatinName:[dict objectForKey:@"latinName"]
-             withPictureUrl:pic
-            withDescription:[dict objectForKey:@"description"]
-          andWithObservedAt:[dict objectForKey:@"coordinates"]];
-}
-
--(id)dict {
+-(id) dict {
     return @{
              @"name": self.name,
              @"latinName": self.latinName,
-             @"picture": self.pictureUrl,
-             @"description": self.description,
-             @"coordinates": self.observed
-             };
+             @"descr": self.descr,
+             @"latitude": self.latitude,
+             @"longitude":self.longitude
+    };
 }
 
 +(Bird *)birdWithDict:(NSDictionary *)dict {
     return [[Bird alloc] initWithDict:dict];
 }
-
-+(Bird *)birdWithDict:(NSDictionary *)dict
-       andWithPicture: (NSString *) pic {
-    return [[Bird alloc] initWithDict:dict andWithPicture:pic];
-}
-
 
 @end

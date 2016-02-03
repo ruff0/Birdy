@@ -73,10 +73,12 @@
         
         controller.birdName.text = currentBird.name;
         controller.birdLatinName.text = currentBird.latinName;
-        controller.birdDescription.text = currentBird.description;        
-        NSString *imageUrl = currentBird.pictureUrl;
+        controller.birdDescription.text = currentBird.descr;
+        
+        NSString *imageUrl = currentBird.picture;
+        NSData *pictureData = [[NSData alloc]initWithBase64EncodedString:imageUrl options:NSDataBase64DecodingIgnoreUnknownCharacters];
+        controller.birdImageView.image = [UIImage imageWithData:pictureData];
         controller.birdImageView.contentMode = UIViewContentModeScaleAspectFit;
-        controller.birdImageView.image = [UIImage imageNamed:imageUrl];
     }
 }
 

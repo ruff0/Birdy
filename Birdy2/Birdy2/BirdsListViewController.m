@@ -13,6 +13,8 @@
 @property (nonatomic, strong) NSMutableArray *searchResults;
 @property (strong, nonatomic) HttpData *http;
 
+@property (strong, nonatomic) UIActivityIndicatorView *loadingIndicator;
+
 @end
 
 @implementation BirdsListViewController
@@ -22,6 +24,13 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.loadingIndicator = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(145, 190, 20,20)];
+    [self.loadingIndicator setActivityIndicatorViewStyle:UIActivityIndicatorViewStyleGray];
+    [self.loadingIndicator setHidesWhenStopped:YES];
+    [self.view addSubview:self.loadingIndicator];
+    [self.loadingIndicator startAnimating];
+    
     
     self.title = @"Birdy list";
     UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(insertNewBird)];
@@ -70,9 +79,12 @@
     
     cell.birdCellNameLabel.text = [[self.searchResults objectAtIndex:indexPath.row] name];
     cell.birdCellLatinNameLabel.text = [[self.searchResults objectAtIndex:indexPath.row] latinName];
-    NSString *imageUrl = [[self.searchResults objectAtIndex:indexPath.row] pictureUrl];
-    cell.birdCellImageView.image = [UIImage imageNamed:imageUrl];
+    
+    NSString *pic = [[self.searchResults objectAtIndex:indexPath.row] picture];
+    NSData *pictureData = [[NSData alloc]initWithBase64EncodedString:pic options:NSDataBase64DecodingIgnoreUnknownCharacters];
+    cell.birdCellImageView.image = [UIImage imageWithData:pictureData];
     cell.birdCellImageView.contentMode = UIViewContentModeScaleAspectFit;
+    
     return cell;
 }
 
@@ -132,13 +144,14 @@
         for (NSDictionary *dictBird in dict){
             i ++;
             NSString *pic = [NSString stringWithFormat:@"%d", i];
-            [dataResultBirds addObject:[Bird birdWithDict: dictBird andWithPicture: pic]];
+            [dataResultBirds addObject:[Bird birdWithDict: dictBird]];
         }
         self.birds = dataResultBirds;
         self.searchResults = dataResultBirds;
      
         dispatch_async(dispatch_get_main_queue(), ^{
             [[weakSelf tableView] reloadData];
+            [[weakSelf loadingIndicator] stopAnimating];
         });
     }];
 }

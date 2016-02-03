@@ -13,13 +13,13 @@
 {
     self = [super init];
     if (self) {
-        self.birds = [self fillWithBirds];
+        /*self.birds = [self fillWithBirds];*/
     }
     
     return self;
 }
 
-- (NSMutableArray*) fillWithBirds {
+/*- (NSMutableArray*) fillWithBirds {
     Bird *kos = [Bird BirdWithId:@"1" withName:@"Kos" withLatinName:@"Kosus magnus" withPictureUrl:@"1" withDescription:@"Kos is little simpatic bird." andWithObservedAt:[NSArray arrayWithObjects: @"here", @"there", nil]];
     
     Bird *garvan = [Bird BirdWithId:@"2" withName:@"Garvan" withLatinName:@"Garvanus evnatus" withPictureUrl:@"2" withDescription:@"Garvan is very clever bird." andWithObservedAt:[NSArray arrayWithObjects: @"here", @"there", nil]];
@@ -29,7 +29,7 @@
     Bird *chinka = [Bird BirdWithId:@"4" withName:@"Chinka" withLatinName:@"Chinkus" withPictureUrl:@"4" withDescription:@"You can see it all arownd you in the city." andWithObservedAt:[NSArray arrayWithObjects: @"here", @"there", nil]];
     
     return [NSMutableArray arrayWithObjects: kos, garvan, siniger, chinka, nil];
-}
+}*/
 
 - (NSArray*) allBirds {
     return self.birds;
