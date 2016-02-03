@@ -22,29 +22,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    NSUInteger numberPages = self.birdsArray.count;
     
-    NSMutableArray *controllers = [[NSMutableArray alloc] init];
-    for (NSUInteger i = 0; i < numberPages; i++)
-    {
-        [controllers addObject:[NSNull null]];
-    }
-    self.viewControllers = controllers;
-    
-    self.scrollView.frame = self.view.bounds;
-    self.scrollView.pagingEnabled = YES;
-    self.scrollView.contentSize = CGSizeMake(CGRectGetWidth(self.scrollView.frame) * numberPages, CGRectGetHeight(self.scrollView.frame));
-    
-    self.scrollView.showsHorizontalScrollIndicator = NO;
-    self.scrollView.showsVerticalScrollIndicator = NO;
-    self.scrollView.scrollsToTop = NO;
-    self.scrollView.delegate = self;
-    
-    self.pageCOntrol.numberOfPages = numberPages;
-    self.pageCOntrol.currentPage = 0;
-    
-    [self loadScrollViewWithPage:0];
-    [self loadScrollViewWithPage:1];
 }
 
 -(void)viewWillAppear:(BOOL)animated{
@@ -59,8 +37,9 @@
     }
     self.viewControllers = controllers;
     
+    self.scrollView.frame = self.view.bounds;
     self.scrollView.pagingEnabled = YES;
-    self.scrollView.contentSize = CGSizeMake(320 * numberPages, CGRectGetHeight(self.scrollView.frame));
+    self.scrollView.contentSize = CGSizeMake(CGRectGetWidth(self.scrollView.frame) * numberPages, CGRectGetHeight(self.scrollView.frame));
     
     self.scrollView.showsHorizontalScrollIndicator = NO;
     self.scrollView.showsVerticalScrollIndicator = NO;
