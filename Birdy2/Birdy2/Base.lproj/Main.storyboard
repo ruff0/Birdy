@@ -33,16 +33,41 @@
                                     <action selector="addNewBird:" destination="4cS-yq-D3p" eventType="touchUpInside" id="ytX-9h-5ho"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zY0-T6-sD7">
+                                <rect key="frame" x="242" y="339" width="116" height="47"/>
+                                <animations/>
+                                <state key="normal" title="Add bird photo"/>
+                                <connections>
+                                    <action selector="addPhotoClick:" destination="4cS-yq-D3p" eventType="touchUpInside" id="DFy-IZ-99L"/>
+                                </connections>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="DkD-O6-TRz">
+                                <rect key="frame" x="157" y="20" width="287" height="206"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="287" id="eLV-8A-yQY"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="vFx-CO-JZu" firstAttribute="top" secondItem="Xfx-iW-iZv" secondAttribute="bottom" constant="25" id="3tb-0C-Mj3"/>
+                            <constraint firstItem="zY0-T6-sD7" firstAttribute="trailing" secondItem="vFx-CO-JZu" secondAttribute="trailing" id="AfM-Wc-DvN"/>
+                            <constraint firstItem="zY0-T6-sD7" firstAttribute="leading" secondItem="vFx-CO-JZu" secondAttribute="leading" id="C0Y-vT-GxY"/>
+                            <constraint firstItem="DkD-O6-TRz" firstAttribute="centerX" secondItem="Xfx-iW-iZv" secondAttribute="centerX" id="Iw0-2l-SBe"/>
+                            <constraint firstItem="DkD-O6-TRz" firstAttribute="top" secondItem="tTx-aN-gGl" secondAttribute="bottom" id="NiR-vu-58r"/>
+                            <constraint firstItem="Xfx-iW-iZv" firstAttribute="top" secondItem="DkD-O6-TRz" secondAttribute="bottom" constant="8" symbolic="YES" id="TpW-5m-b16"/>
+                            <constraint firstItem="zY0-T6-sD7" firstAttribute="top" secondItem="vFx-CO-JZu" secondAttribute="bottom" constant="29" id="VGg-JW-zAX"/>
+                            <constraint firstItem="qex-OZ-B3l" firstAttribute="top" secondItem="zY0-T6-sD7" secondAttribute="bottom" constant="214" id="YBK-P6-azJ"/>
                             <constraint firstItem="Xfx-iW-iZv" firstAttribute="centerX" secondItem="vFx-CO-JZu" secondAttribute="centerX" id="mOA-81-ZuL"/>
                             <constraint firstItem="vFx-CO-JZu" firstAttribute="centerX" secondItem="WYH-BW-baw" secondAttribute="centerX" id="x4t-hZ-zHH"/>
                             <constraint firstItem="vFx-CO-JZu" firstAttribute="centerY" secondItem="WYH-BW-baw" secondAttribute="centerY" id="zks-sN-KZk"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="birdImageView" destination="DkD-O6-TRz" id="Kk6-hl-f9k"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rvw-eC-sQd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

@@ -1,11 +1,3 @@
-//
-//  BirdyData.m
-//  Birdy2
-//
-//  Created by veso on 1/31/16.
-//  Copyright © 2016 veso. All rights reserved.
-//
-
 #import "BirdyData.h"
 #import "Bird.h"
 
@@ -23,11 +15,11 @@
     if (self) {
         self.birds = [self fillWithBirds];
     }
+    
     return self;
 }
 
 - (NSMutableArray*) fillWithBirds {
-    
     Bird *kos = [Bird BirdWithId:@"1" withName:@"Kos" withLatinName:@"Kosus magnus" withPictureUrl:@"1" withDescription:@"Kos is little simpatic bird." andWithObservedAt:[NSArray arrayWithObjects: @"here", @"there", nil]];
     
     Bird *garvan = [Bird BirdWithId:@"2" withName:@"Garvan" withLatinName:@"Garvanus evnatus" withPictureUrl:@"2" withDescription:@"Garvan is very clever bird." andWithObservedAt:[NSArray arrayWithObjects: @"here", @"there", nil]];

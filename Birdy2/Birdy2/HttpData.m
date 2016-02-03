@@ -15,21 +15,19 @@
          body:(NSDictionary *)bodyDict
       headers:(NSDictionary *)headersDict
 andCompletionHandler:(void (^)(NSDictionary *, NSError *))completionHandler {
+    
     NSURL *url = [NSURL URLWithString:urlStr];
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
     [request setHTTPMethod:method];
     
     if(bodyDict){
-        NSData *body = [NSJSONSerialization dataWithJSONObject:bodyDict
-                                                       options:NSJSONWritingPrettyPrinted
-                                                         error:nil];
+        NSData *body = [NSJSONSerialization dataWithJSONObject:bodyDict options:NSJSONWritingPrettyPrinted error:nil];
         [request setHTTPBody: body];
     }
     
     if(headersDict){
         for(id key in headersDict){
-            [request addValue:[headersDict objectForKey:key]
-           forHTTPHeaderField:key];
+            [request addValue:[headersDict objectForKey:key] forHTTPHeaderField:key];
         }
     }
     
@@ -53,15 +51,12 @@ andCompletionHandler:(void (^)(NSDictionary *, NSError *))completionHandler {
 }
 
 -(void)getFrom:(NSString *)urlStr headers:(NSDictionary *)headersDict withCompletionHandler:(void (^)(NSDictionary *, NSError *))completionHandler {
-    [self sendAt:urlStr withMethod:@"GET"
-            body:nil headers:headersDict andCompletionHandler:completionHandler];
+    [self sendAt:urlStr withMethod:@"GET" body:nil headers:headersDict andCompletionHandler:completionHandler];
 }
 
 -(void)postAt:(NSString *)urlStr withBody:(NSDictionary *)bodyDict headers:(NSDictionary *)headersDict andCompletionHandler:(void (^)(NSDictionary *, NSError *))completionHandler {
-    [self sendAt:urlStr withMethod:@"POST"
-            body:bodyDict headers:headersDict andCompletionHandler:completionHandler];
+    [self sendAt:urlStr withMethod:@"POST" body:bodyDict headers:headersDict andCompletionHandler:completionHandler];
 }
-
 
 +(HttpData *)httpData {
     return [[HttpData alloc] init];

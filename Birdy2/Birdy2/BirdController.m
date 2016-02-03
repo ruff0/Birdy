@@ -1,11 +1,3 @@
-//
-//  BirdController.m
-//  Birdy2
-//
-//  Created by veso on 2/1/16.
-//  Copyright © 2016 veso. All rights reserved.
-//
-
 #import "BirdController.h"
 
 @interface BirdController ()

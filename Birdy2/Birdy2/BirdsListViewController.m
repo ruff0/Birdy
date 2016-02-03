@@ -11,17 +11,9 @@
 
 @property (nonatomic, strong) UISearchController *searchController;
 @property (nonatomic, strong) NSMutableArray *searchResults;
-
 @property (strong, nonatomic) HttpData *http;
 
 @end
-
-// working with JSON (file in this case)
-// NSString *path = [[NSBundle mainBundle] pathForResource:@"airlineData" ofType:@"json"];
-// NSData *data = [NSData dataWithContentsOfFile:path];
-// NSError *error;
-// NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:data options:0 error:&error];
-// self.airlines = dict[@"airlines"];
 
 @implementation BirdsListViewController
 {
@@ -32,9 +24,6 @@
     [super viewDidLoad];
     
     self.title = @"Birdy list";
-
-    self.searchResults = [self.birds mutableCopy];
-    
     UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(insertNewBird)];
     self.navigationItem.rightBarButtonItem = addButton;
     
@@ -42,15 +31,12 @@
     self.searchController.searchResultsUpdater = self;
     self.searchController.dimsBackgroundDuringPresentation = NO;
     self.searchController.searchBar.delegate = self;
-    
     self.tableView.tableHeaderView = self.searchController.searchBar;
     self.definesPresentationContext = YES;
     [self.searchController.searchBar sizeToFit];
     
     _url = @"https://protected-falls-94776.herokuapp.com/api/birds";
-    
     self.http = [HttpData httpData];
-    
     [self loadBirds];
 }
 
@@ -65,8 +51,6 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
-#pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 1;
@@ -97,9 +81,6 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(nonnull NSIndexPath *)indexPath{
-    
-    Bird *currentBird = [self.searchResults objectAtIndex:indexPath.row];
-    
     NSString *detailsSb = @"birdsDetailsStoryBoard";
     BirdsContentController *detailsController = [self.storyboard instantiateViewControllerWithIdentifier:detailsSb];
     
@@ -117,11 +98,8 @@
 }
 
 - (void)updateSearchResultsForSearchController:(UISearchController *)searchController {
-    
     NSString *searchString = self.searchController.searchBar.text;
-    
     [self updateFilteredContentForBirdName:searchString];
-    
     [self.tableView reloadData];
 }
 
@@ -140,33 +118,30 @@
 }
 
 -(void) loadBirds {
-    
     __weak id weakSelf = self;
     
-    [self.http getFrom:_url headers:nil
- withCompletionHandler:^(NSDictionary * dict, NSError *err) {
-     if(err){
-         NSString *errorMsg = [err description];
-         NSLog(errorMsg);
-         return;
-     }
-     NSMutableArray *dataResultBirds = [NSMutableArray array];
+    [self.http getFrom:_url headers:nil withCompletionHandler:^(NSDictionary * dict, NSError *err) {
+        if(err){
+            NSString *errorMsg = [err description];
+            NSLog(errorMsg);
+            return;
+        }
+        
+        NSMutableArray *dataResultBirds = [NSMutableArray array];
+        NSInteger i = 0;
+        for (NSDictionary *dictBird in dict){
+            i ++;
+            NSString *pic = [NSString stringWithFormat:@"%d", i];
+            [dataResultBirds addObject:[Bird birdWithDict: dictBird andWithPicture: pic]];
+        }
+        self.birds = dataResultBirds;
+        self.searchResults = dataResultBirds;
      
-     NSInteger i = 0;
-     for (NSDictionary *dictBird in dict){
-         i ++;
-         NSString *pic = [NSString stringWithFormat:@"%d", i];
-         [dataResultBirds addObject:[Bird birdWithDict: dictBird andWithPicture: pic]];
-     }
-     self.birds = dataResultBirds;
-     self.searchResults = dataResultBirds;
-     
-     dispatch_async(dispatch_get_main_queue(), ^{
-         [[weakSelf tableView] reloadData];
-     });
- }];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [[weakSelf tableView] reloadData];
+        });
+    }];
 }
-
 
 - (void)insertNewBird {
     if (!self.birds) {
@@ -176,6 +151,6 @@
     NSString *detailsSb = @"addBirdStoryBoard";
     AddBirdViewController *addBirdController = [self.storyboard instantiateViewControllerWithIdentifier:detailsSb];
     [self.navigationController pushViewController:addBirdController animated:YES];
-
 }
+
 @end

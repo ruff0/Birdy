@@ -1,11 +1,3 @@
-//
-//  BirdAndDictionary.m
-//  Birdy2
-//
-//  Created by veso on 2/2/16.
-//  Copyright © 2016 veso. All rights reserved.
-//
-
 #import "BirdAndDictionary.h"
 
 @implementation Bird (Dictionaries)
