@@ -22,6 +22,7 @@
 		DA6765C61C5FDCE600B4FD6F /* BirdController.m in Sources */ = {isa = PBXBuildFile; fileRef = DA6765C51C5FDCE600B4FD6F /* BirdController.m */; };
 		DA818C441C61443F00B915A6 /* BirdAndDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = DA818C431C61443F00B915A6 /* BirdAndDictionary.m */; };
 		DA818C471C6146D200B915A6 /* HttpData.m in Sources */ = {isa = PBXBuildFile; fileRef = DA818C461C6146D200B915A6 /* HttpData.m */; };
+		DADBA8581C63D14B002DDFFD /* Coordinates.m in Sources */ = {isa = PBXBuildFile; fileRef = DADBA8571C63D14A002DDFFD /* Coordinates.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,6 +53,8 @@
 		DA818C431C61443F00B915A6 /* BirdAndDictionary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BirdAndDictionary.m; sourceTree = "<group>"; };
 		DA818C451C6146D200B915A6 /* HttpData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HttpData.h; sourceTree = "<group>"; };
 		DA818C461C6146D200B915A6 /* HttpData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HttpData.m; sourceTree = "<group>"; };
+		DADBA8561C63D14A002DDFFD /* Coordinates.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Coordinates.h; sourceTree = "<group>"; };
+		DADBA8571C63D14A002DDFFD /* Coordinates.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Coordinates.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,6 +128,8 @@
 		DA5901571C5E4B42002A173F /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				DADBA8561C63D14A002DDFFD /* Coordinates.h */,
+				DADBA8571C63D14A002DDFFD /* Coordinates.m */,
 				DA5901581C5E4B63002A173F /* Bird.h */,
 				DA5901591C5E4B63002A173F /* Bird.m */,
 				DA818C421C61443F00B915A6 /* BirdAndDictionary.h */,
@@ -228,6 +233,7 @@
 				DA6765C61C5FDCE600B4FD6F /* BirdController.m in Sources */,
 				DA5901561C5E44FA002A173F /* BirdsListViewController.m in Sources */,
 				DA5901601C5E7D07002A173F /* AddBirdViewController.m in Sources */,
+				DADBA8581C63D14B002DDFFD /* Coordinates.m in Sources */,
 				DA5901411C5E4424002A173F /* AppDelegate.m in Sources */,
 				DA6765C31C5FD55F00B4FD6F /* BirdsContentController.m in Sources */,
 				DA59015A1C5E4B63002A173F /* Bird.m in Sources */,

@@ -14,6 +14,7 @@
 - (id)initWithName:(NSString *)aName
      withLatinName:(NSString *)aLatinName
    withDescription:(NSString *)aDescr
+           withPic:(NSString *)aPic
       withLatitude:(NSString *)aLat
   andWithLongitude:(NSString *)aLon;
 
@@ -34,6 +35,7 @@ andWithPositions:(NSMutableArray*)aPositions;
 +(instancetype)BirdWithName:(NSString*)aName
               withLatinName:(NSString*)aLatinName
             withDescription:(NSString*)aDescr
+                    withPic:(NSString *)aPic
                withLatitude:(NSString*)aLat
            andWithLongitude:(NSString*)aLon;
 

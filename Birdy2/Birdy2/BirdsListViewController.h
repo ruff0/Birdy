@@ -2,6 +2,6 @@
 
 @interface BirdsListViewController : UITableViewController
 
-@property (strong, nonatomic) NSArray *birds;
+@property (strong, nonatomic) NSMutableArray *birds;
 
 @end

@@ -16,6 +16,7 @@
     return @{
              @"name": self.name,
              @"latinName": self.latinName,
+             @"picture": self.picture,
              @"descr": self.descr,
              @"latitude": self.latitude,
              @"longitude":self.longitude

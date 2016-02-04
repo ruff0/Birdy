@@ -58,6 +58,10 @@ andCompletionHandler:(void (^)(NSDictionary *, NSError *))completionHandler {
     [self sendAt:urlStr withMethod:@"POST" body:bodyDict headers:headersDict andCompletionHandler:completionHandler];
 }
 
+-(void)putAt:(NSString *)urlStr withBody:(NSDictionary *)bodyDict headers:(NSDictionary *)headersDict andCompletionHandler:(void (^)(NSDictionary *, NSError *))completionHandler {
+    [self sendAt:urlStr withMethod:@"PUT" body:bodyDict headers:headersDict andCompletionHandler:completionHandler];
+}
+
 +(HttpData *)httpData {
     return [[HttpData alloc] init];
 }

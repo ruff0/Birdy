@@ -19,6 +19,11 @@ withCompletionHandler: (void(^)(NSDictionary*, NSError*)) completionHandler;
        headers: (NSDictionary*) headersDict
 andCompletionHandler: (void(^)(NSDictionary*, NSError*)) completionHandler;
 
+-(void) putAt: (NSString*) urlStr
+      withBody: (NSDictionary*) bodyDict
+       headers: (NSDictionary*) headersDict
+andCompletionHandler: (void(^)(NSDictionary*, NSError*)) completionHandler;
+
 +(HttpData*)httpData;
 
 @end

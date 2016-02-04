@@ -4,18 +4,22 @@
 #import "AppDelegate.h"
 #import "BirdsListViewController.h"
 #import "HttpData.h"
+#import <CoreLocation/CoreLocation.h>
 
-@interface AddBirdViewController () <UIImagePickerControllerDelegate, UINavigationControllerDelegate>
+@interface AddBirdViewController () <UIImagePickerControllerDelegate, UINavigationControllerDelegate, CLLocationManagerDelegate>
 - (IBAction)addNewBird:(id)sender;
 - (IBAction)addPhotoClick:(id)sender;
 @property (weak, nonatomic) IBOutlet UIImageView *birdImageView;
-@property (weak, nonatomic) NSString *imageString;
+@property (strong, nonatomic) NSString *imageString;
 
 @property (weak, nonatomic) IBOutlet UITextField *birdNamelabel;
 @property (weak, nonatomic) IBOutlet UITextField *birdLatinNameLabel;
 @property (weak, nonatomic) IBOutlet UITextView *birdDescriptionTextView;
 
 @property (strong, nonatomic) HttpData *http;
+@property (strong, nonatomic) CLLocationManager* locationManager;
+@property (strong, nonatomic) NSString* latitude;
+@property (strong, nonatomic) NSString* longitude;
 
 @end
 
@@ -30,6 +34,14 @@
     
     _url = @"https://protected-falls-94776.herokuapp.com/api/birds";
     self.http = [HttpData httpData];
+    
+    self.locationManager = [[CLLocationManager alloc]init];
+    self.locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters;
+    self.locationManager.delegate = self;
+    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0) {
+        [self.locationManager requestWhenInUseAuthorization];
+    }
+    [self.locationManager startUpdatingLocation];
 }
 
 
@@ -48,9 +60,8 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (IBAction)addNewBird:(id)sender {
-    
-    Bird *newBird = [Bird BirdWithName:self.birdNamelabel.text withLatinName:self.birdLatinNameLabel.text withDescription:self.birdDescriptionTextView.text withLatitude:@"42.687411" andWithLongitude:@"23.377685"];
+- (IBAction)addNewBird:(id)sender {    
+    Bird *newBird = [Bird BirdWithName:self.birdNamelabel.text withLatinName:self.birdLatinNameLabel.text withDescription:self.birdDescriptionTextView.text withPic:self.imageString withLatitude:self.latitude andWithLongitude:self.longitude];
     
     [self saveBird:newBird];
     
@@ -68,8 +79,20 @@
     NSDictionary *header = [[NSDictionary alloc] initWithObjectsAndKeys:@"application/json", @"content-type", nil];
     
     [self.http postAt:_url withBody:dictionaryBird headers:header andCompletionHandler:^(NSDictionary *dict, NSError *err) {
-        if(err){
-            NSLog(err);
+        NSInteger responseStatusNumber = 200;
+        if (![dict isKindOfClass:[NSArray class]]) {
+            if ([dict objectForKey:@"status"]) {
+                responseStatusNumber = [[dict objectForKey:@"status"] integerValue];
+            }
+        }
+        
+        if(err || (responseStatusNumber >= 400)){
+            dispatch_async(dispatch_get_main_queue(), ^{
+                UIAlertController *failAlertController = [UIAlertController alertControllerWithTitle:@"Adding birdy failed" message:@"Network access or connectivity problems terminated the action." preferredStyle:UIAlertControllerStyleAlert];
+                UIAlertAction *actionOk = [UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDefault handler:nil];
+                [failAlertController addAction:actionOk];
+                [weakSelf presentViewController:failAlertController animated:YES completion:nil];
+            });
             return;
         }
         
@@ -100,6 +123,14 @@
     } else {
         imagePickerController.sourceType =  UIImagePickerControllerSourceTypeCamera;
         [self presentViewController:imagePickerController animated:YES completion:nil];
+    }
+}
+
+-(void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray<CLLocation *> *)locations {
+    CLLocation *currentLocation = [locations lastObject];
+    if (currentLocation != nil) {
+        self.longitude = [NSString stringWithFormat:@"%.8f", currentLocation.coordinate.longitude];
+        self.latitude = [NSString stringWithFormat:@"%.8f", currentLocation.coordinate.latitude];
     }
 }
 @end

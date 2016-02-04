@@ -2,12 +2,19 @@
 
 @interface BirdController ()
 
+
+
 @end
 
 @implementation BirdController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.birdDescription.scrollsToTop = YES;	
+}
+
+-(void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -15,6 +22,8 @@
     
     
 }
+
+
 
 /*
 #pragma mark - Navigation

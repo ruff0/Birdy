@@ -1,18 +1,44 @@
 #import "BirdsContentController.h"
 #import "BirdController.h"
+#import "HttpData.h"
+#import "Coordinates.h"
+#import <CoreLocation/CoreLocation.h>
 
-@interface BirdsContentController ()
+@interface BirdsContentController ()<CLLocationManagerDelegate>
 
 @property (nonatomic, strong) NSMutableArray *viewControllers;
 @property (strong, nonatomic) IBOutlet UIPageControl *pageCOntrol;
 @property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
+@property (strong, nonatomic) HttpData *http;
+
+@property (weak, nonatomic) UIAlertController *alertController;
+@property (strong, nonatomic) CLLocationManager* locationManager;
+@property (strong, nonatomic) NSString* latitude;
+@property (strong, nonatomic) NSString* longitude;
 
 @end
 
 @implementation BirdsContentController
+{
+    NSString *_baseUrl;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addCoordinates)];
+    self.navigationItem.rightBarButtonItem = addButton;
+    
+    self.http = [HttpData httpData];
+    _baseUrl = @"https://protected-falls-94776.herokuapp.com/api/birds/coordinates/";
+    
+    self.locationManager = [[CLLocationManager alloc]init];
+    self.locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters;
+    self.locationManager.delegate = self;
+    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0) {
+        [self.locationManager requestWhenInUseAuthorization];
+    }
+    [self.locationManager startUpdatingLocation];
 }
 
 -(void)viewWillAppear:(BOOL)animated{
@@ -143,5 +169,69 @@
     [self gotoPage:YES];
 }
 
+- (void) addCoordinates {
+    self.alertController = [UIAlertController alertControllerWithTitle:@"Adding new coordinates" message:@"You are about to add your current location as a place where this bird has been observed. Do you want to continue?" preferredStyle:UIAlertControllerStyleAlert];
+    
+    __weak id weakSelf = self;
+    
+    UIAlertAction *okAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"OK", @"OK action") style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        
+        Bird *currentBird = [self.birdsArray objectAtIndex:self.pageCOntrol.currentPage];
+        NSString *currentBirdId = [currentBird id];
+        NSDictionary *header = [[NSDictionary alloc] initWithObjectsAndKeys:@"application/json", @"content-type", nil];
+        NSString *url = [_baseUrl stringByAppendingString:currentBirdId];
+        NSDictionary *currentCoordinates = [[NSDictionary alloc]initWithObjectsAndKeys:self.latitude, @"latitude", self.longitude, @"longitude", nil];
+        
+        [[weakSelf http] putAt:url withBody:currentCoordinates headers:header andCompletionHandler:^(NSDictionary *dict, NSError *err) {
+
+            NSInteger responseStatusNumber = 200;
+            if (![dict isKindOfClass:[NSArray class]]) {
+                if ([dict objectForKey:@"status"]) {
+                    responseStatusNumber = [[dict objectForKey:@"status"] integerValue];
+                }
+            }
+            
+            if(err || (responseStatusNumber >= 400)){
+                dispatch_async(dispatch_get_main_queue(), ^{
+                   UIAlertController *failAlertController = [UIAlertController alertControllerWithTitle:@"Adding coordinates failed" message:@"Network access or connectivity problems terminated the action." preferredStyle:UIAlertControllerStyleAlert];
+                    UIAlertAction *actionOk = [UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDefault handler:nil];
+                    [failAlertController addAction:actionOk];
+                    [weakSelf presentViewController:failAlertController animated:YES completion:nil];
+                });
+                return;
+            }
+            
+            Coordinates *newCoordinates = [Coordinates CoordinatesWithLatitude:@"23.00" andWithLongitude:@"42.00"];
+            NSMutableArray *positions = [currentBird.observedPositions mutableCopy];
+            [positions addObject:newCoordinates];
+            currentBird.observedPositions = positions;
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                UIAlertController *successAlertController = [UIAlertController alertControllerWithTitle:@"Adding coordinates done" message:@"Your current coordinates have been added to Birdy database." preferredStyle:UIAlertControllerStyleAlert];
+                UIAlertAction *actionOk = [UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDefault handler:nil];
+                [successAlertController addAction:actionOk];
+                [weakSelf presentViewController:successAlertController animated:YES completion:nil];
+            });
+            return;
+        }];
+    }];
+
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"Cancel", @"Cancel action") style:UIAlertActionStyleCancel handler: nil];
+    
+    [self.alertController addAction:cancelAction];
+    [self.alertController addAction:okAction];
+    
+    [self presentViewController:self.alertController animated:YES completion:nil];
+}
+
+-(void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray<CLLocation *> *)locations {
+    CLLocation *currentLocation = [locations lastObject];
+    if (currentLocation != nil) {
+        self.longitude = [NSString stringWithFormat:@"%.8f", currentLocation.coordinate.longitude];
+        self.latitude = [NSString stringWithFormat:@"%.8f", currentLocation.coordinate.latitude];
+    }
+}
 
 @end
+
+

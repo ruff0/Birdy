@@ -133,9 +133,20 @@
     __weak id weakSelf = self;
     
     [self.http getFrom:_url headers:nil withCompletionHandler:^(NSDictionary * dict, NSError *err) {
-        if(err){
-            NSString *errorMsg = [err description];
-            NSLog(errorMsg);
+        NSInteger responseStatusNumber = 200;
+        if (![dict isKindOfClass:[NSArray class]]) {
+            if ([dict objectForKey:@"status"]) {
+                responseStatusNumber = [[dict objectForKey:@"status"] integerValue];
+            }
+        }
+        
+        if(err || (responseStatusNumber >= 400)){
+            dispatch_async(dispatch_get_main_queue(), ^{
+                UIAlertController *failAlertController = [UIAlertController alertControllerWithTitle:@"Loading birdies failed" message:@"Network access or connectivity problems terminated the action." preferredStyle:UIAlertControllerStyleAlert];
+                UIAlertAction *actionOk = [UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDefault handler:nil];
+                [failAlertController addAction:actionOk];
+                [weakSelf presentViewController:failAlertController animated:YES completion:nil];
+            });
             return;
         }
         

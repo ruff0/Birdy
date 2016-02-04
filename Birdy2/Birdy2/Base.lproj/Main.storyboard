@@ -189,64 +189,58 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Latin name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fln-Ud-MPf">
-                                <rect key="frame" x="300" y="70" width="71" height="17"/>
+                                <rect key="frame" x="175" y="70" width="71" height="17"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="italicSystem" pointSize="14"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0BL-Md-k6A">
-                                <rect key="frame" x="300" y="95" width="0.0" height="250"/>
+                                <rect key="frame" x="175" y="95" width="250" height="220"/>
                                 <animations/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="lessThanOrEqual" constant="250" id="0KG-Yg-phx"/>
-                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="250" id="RLA-98-ak8"/>
+                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="220" id="RLA-98-ak8"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Bird name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6b4-nZ-JgW">
-                                <rect key="frame" x="300" y="28" width="118" height="34"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Bird name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6b4-nZ-JgW">
+                                <rect key="frame" x="175" y="28" width="118" height="34"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" weight="thin" pointSize="28"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UAT-3h-SQp">
+                                <rect key="frame" x="241" y="559" width="119" height="29"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <state key="normal" title="See locations map"/>
+                            </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="tZL-8b-3nP">
-                                <rect key="frame" x="300" y="369" width="240" height="189"/>
+                                <rect key="frame" x="40" y="339" width="520" height="209"/>
                                 <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <fontDescription key="fontDescription" type="system" weight="thin" pointSize="10"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UAT-3h-SQp">
-                                <rect key="frame" x="400" y="549" width="180" height="43"/>
-                                <animations/>
-                                <state key="normal" title="See locations map"/>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wwR-bW-Tdn">
-                                <rect key="frame" x="20" y="549" width="180" height="43"/>
-                                <animations/>
-                                <state key="normal" title="Add new location"/>
-                            </button>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="UAT-3h-SQp" firstAttribute="trailing" secondItem="Svj-5f-BVv" secondAttribute="trailingMargin" id="1bu-c0-xEI"/>
+                            <constraint firstItem="ToD-T5-ksN" firstAttribute="top" secondItem="UAT-3h-SQp" secondAttribute="bottom" constant="12" id="0IL-4U-eY6"/>
                             <constraint firstItem="6b4-nZ-JgW" firstAttribute="top" secondItem="Svj-5f-BVv" secondAttribute="topMargin" constant="28" id="1yD-PP-Hgq"/>
-                            <constraint firstItem="UAT-3h-SQp" firstAttribute="top" secondItem="wwR-bW-Tdn" secondAttribute="top" id="354-es-4kN"/>
                             <constraint firstItem="0BL-Md-k6A" firstAttribute="centerX" secondItem="Svj-5f-BVv" secondAttribute="centerX" id="3cr-eb-Jlb"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="UAT-3h-SQp" secondAttribute="trailing" constant="53" id="Cnk-Z6-pwE"/>
-                            <constraint firstItem="0BL-Md-k6A" firstAttribute="top" secondItem="Fln-Ud-MPf" secondAttribute="bottom" constant="6" id="MAA-if-xg4"/>
-                            <constraint firstItem="ToD-T5-ksN" firstAttribute="top" secondItem="tZL-8b-3nP" secondAttribute="bottom" constant="42" id="Sg1-xR-odk"/>
-                            <constraint firstItem="tZL-8b-3nP" firstAttribute="leading" secondItem="0BL-Md-k6A" secondAttribute="leading" id="VEb-fG-fmo"/>
-                            <constraint firstItem="wwR-bW-Tdn" firstAttribute="leading" secondItem="Svj-5f-BVv" secondAttribute="leadingMargin" id="btm-Jp-lxT"/>
-                            <constraint firstItem="ToD-T5-ksN" firstAttribute="top" secondItem="UAT-3h-SQp" secondAttribute="bottom" constant="8" id="e1m-jP-pDt"/>
-                            <constraint firstItem="Fln-Ud-MPf" firstAttribute="top" secondItem="6b4-nZ-JgW" secondAttribute="bottom" constant="6" id="h2f-sE-lhE"/>
+                            <constraint firstItem="tZL-8b-3nP" firstAttribute="leading" secondItem="Svj-5f-BVv" secondAttribute="leadingMargin" constant="20" id="53B-Gl-mQd"/>
+                            <constraint firstItem="0BL-Md-k6A" firstAttribute="top" secondItem="Fln-Ud-MPf" secondAttribute="bottom" constant="8" id="MAA-if-xg4"/>
+                            <constraint firstItem="tZL-8b-3nP" firstAttribute="bottom" secondItem="UAT-3h-SQp" secondAttribute="bottom" constant="-40" id="ee2-eN-wRl"/>
+                            <constraint firstItem="Fln-Ud-MPf" firstAttribute="top" secondItem="6b4-nZ-JgW" secondAttribute="bottom" constant="8" id="h2f-sE-lhE"/>
                             <constraint firstItem="Fln-Ud-MPf" firstAttribute="leading" secondItem="0BL-Md-k6A" secondAttribute="leading" id="k4y-Y4-Xv7"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="tZL-8b-3nP" secondAttribute="trailing" constant="20" id="pRA-d0-Wgr"/>
                             <constraint firstItem="6b4-nZ-JgW" firstAttribute="leading" secondItem="0BL-Md-k6A" secondAttribute="leading" id="rHS-Ii-T0j"/>
-                            <constraint firstItem="ToD-T5-ksN" firstAttribute="top" secondItem="wwR-bW-Tdn" secondAttribute="bottom" constant="8" symbolic="YES" id="rRn-fR-0SI"/>
                             <constraint firstItem="tZL-8b-3nP" firstAttribute="top" secondItem="0BL-Md-k6A" secondAttribute="bottom" constant="24" id="tb7-Hq-GfQ"/>
+                            <constraint firstItem="UAT-3h-SQp" firstAttribute="centerX" secondItem="Svj-5f-BVv" secondAttribute="centerX" id="wLk-jl-w52"/>
+                            <constraint firstItem="tZL-8b-3nP" firstAttribute="centerX" secondItem="Svj-5f-BVv" secondAttribute="centerX" id="x4C-of-UBQ"/>
                         </constraints>
                     </view>
                     <connections>

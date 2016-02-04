@@ -17,12 +17,14 @@ andWithDescription:(NSString*)aDescr {
 - (id)initWithName:(NSString *)aName
    withLatinName:(NSString *)aLatinName
  withDescription:(NSString *)aDescr
+         withPic:(NSString *)aPic
     withLatitude:(NSString *)aLat
 andWithLongitude:(NSString *)aLon {
     self = [self initWithName:aName withLatinName:aLatinName andWithDescription:aDescr];
     if (self) {
         self.latitude = aLat;
         self.longitude = aLon;
+        self.picture = aPic;
     }
     return self;
 }
@@ -54,9 +56,10 @@ andWithPositions:(NSMutableArray*)aPositions {
 + (instancetype)BirdWithName:(NSString *)aName
                withLatinName:(NSString *)aLatinName
              withDescription:(NSString *)aDescr
+                     withPic:(NSString *)aPic
                 withLatitude:(NSString *)aLat
              andWithLongitude:(NSString *)aLon {
-    return [[self alloc] initWithName:aName withLatinName:aLatinName withDescription:aDescr withLatitude:aLat andWithLongitude:aLon];
+    return [[self alloc] initWithName:aName withLatinName:aLatinName withDescription:aDescr withPic:aPic withLatitude:aLat andWithLongitude:aLon];
 }
 
 @end
