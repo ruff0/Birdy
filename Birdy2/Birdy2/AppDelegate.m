@@ -19,6 +19,8 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
     self.data = [[BirdyData alloc]init];
+    [GMSServices provideAPIKey:@"AIzaSyD0nPRiwBIvU2m547H1Y9IbxjYpJSs7DG0"];
+    
     // Override point for customization after application launch.
     return YES;
 }

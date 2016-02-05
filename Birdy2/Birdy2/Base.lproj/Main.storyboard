@@ -158,7 +158,6 @@
                         <constraints>
                             <constraint firstItem="uUf-31-YHl" firstAttribute="centerX" secondItem="Ocd-Gf-Eja" secondAttribute="centerX" constant="-9.5" id="4yr-vi-Fbe"/>
                             <constraint firstItem="noU-ge-Sf7" firstAttribute="top" secondItem="Ocd-Gf-Eja" secondAttribute="bottom" id="Bbl-C1-mOy"/>
-                            <constraint firstItem="Ocd-Gf-Eja" firstAttribute="leading" secondItem="XaG-GG-K1L" secondAttribute="leadingMargin" constant="-20" id="Vge-6h-zZx"/>
                             <constraint firstItem="Ocd-Gf-Eja" firstAttribute="top" secondItem="XaG-GG-K1L" secondAttribute="topMargin" constant="45" id="awx-1v-Cds"/>
                             <constraint firstItem="noU-ge-Sf7" firstAttribute="top" secondItem="uUf-31-YHl" secondAttribute="bottom" constant="20" id="e6Q-jD-AcO"/>
                             <constraint firstItem="Ocd-Gf-Eja" firstAttribute="leading" secondItem="XaG-GG-K1L" secondAttribute="leadingMargin" constant="-20" id="eDF-BW-nNx"/>
@@ -195,14 +194,6 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0BL-Md-k6A">
-                                <rect key="frame" x="175" y="95" width="250" height="220"/>
-                                <animations/>
-                                <constraints>
-                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="250" id="0KG-Yg-phx"/>
-                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="220" id="RLA-98-ak8"/>
-                                </constraints>
-                            </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Bird name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6b4-nZ-JgW">
                                 <rect key="frame" x="175" y="28" width="118" height="34"/>
                                 <animations/>
@@ -215,8 +206,11 @@
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <state key="normal" title="See locations map"/>
+                                <connections>
+                                    <action selector="seeLocations:" destination="udC-hB-xS8" eventType="touchUpInside" id="7d4-Tr-Mwh"/>
+                                </connections>
                             </button>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="tZL-8b-3nP">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="tZL-8b-3nP">
                                 <rect key="frame" x="40" y="339" width="520" height="209"/>
                                 <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -224,9 +218,23 @@
                                 <fontDescription key="fontDescription" type="system" weight="thin" pointSize="10"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0BL-Md-k6A">
+                                <rect key="frame" x="175" y="95" width="250" height="220"/>
+                                <animations/>
+                                <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="250" id="0KG-Yg-phx"/>
+                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="220" id="RLA-98-ak8"/>
+                                </constraints>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="xmp-DU-Fca" appends="YES" id="XT6-Ox-dkL"/>
+                                    <outletCollection property="gestureRecognizers" destination="jXw-wL-caY" appends="YES" id="Avw-6F-DgP"/>
+                                </connections>
+                            </imageView>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="ToD-T5-ksN" firstAttribute="top" secondItem="UAT-3h-SQp" secondAttribute="bottom" constant="12" id="0IL-4U-eY6"/>
                             <constraint firstItem="6b4-nZ-JgW" firstAttribute="top" secondItem="Svj-5f-BVv" secondAttribute="topMargin" constant="28" id="1yD-PP-Hgq"/>
@@ -251,6 +259,16 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CsP-oo-noV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <panGestureRecognizer minimumNumberOfTouches="1" id="xmp-DU-Fca">
+                    <connections>
+                        <action selector="birdImagePan:" destination="udC-hB-xS8" id="74o-oK-yYc"/>
+                    </connections>
+                </panGestureRecognizer>
+                <pinchGestureRecognizer id="jXw-wL-caY">
+                    <connections>
+                        <action selector="birdImagepinch:" destination="udC-hB-xS8" id="4fa-ut-wTg"/>
+                    </connections>
+                </pinchGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="2255" y="-159"/>
         </scene>

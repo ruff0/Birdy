@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "BirdyData.h"
+@import GoogleMaps;
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 

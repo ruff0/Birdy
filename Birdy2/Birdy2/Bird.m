@@ -39,7 +39,7 @@ andWithPositions:(NSMutableArray*)aPositions {
     if (self) {
         self.id = aId;
         self.picture = aPic;
-        self.observedPositions = aPositions;
+        self.observedPositionsFromDb = aPositions;
     }
     return self;
 }

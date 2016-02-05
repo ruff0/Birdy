@@ -151,11 +151,9 @@
         }
         
         NSMutableArray *dataResultBirds = [NSMutableArray array];
-        NSInteger i = 0;
         for (NSDictionary *dictBird in dict){
-            i ++;
-            NSString *pic = [NSString stringWithFormat:@"%d", i];
-            [dataResultBirds addObject:[Bird birdWithDict: dictBird]];
+            Bird *currentBird = [Bird birdWithDict: dictBird];
+            [dataResultBirds addObject: currentBird];
         }
         self.birds = dataResultBirds;
         self.searchResults = dataResultBirds;

@@ -9,7 +9,8 @@
 @property (strong, nonatomic) NSString *descr;
 @property (strong, nonatomic) NSString *latitude;
 @property (strong, nonatomic) NSString *longitude;
-@property (strong, nonatomic) NSMutableArray *observedPositions;
+@property (strong, nonatomic) NSMutableArray *observedPositionsFromDb;
+@property (strong, nonatomic) NSMutableArray *observedPositionsCoordinates;
 
 - (id)initWithName:(NSString *)aName
      withLatinName:(NSString *)aLatinName

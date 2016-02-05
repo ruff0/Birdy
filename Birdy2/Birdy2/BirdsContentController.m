@@ -54,7 +54,7 @@
     
     self.scrollView.frame = self.view.bounds;
     self.scrollView.pagingEnabled = YES;
-    self.scrollView.contentSize = CGSizeMake(CGRectGetWidth(self.scrollView.frame) * numberPages, CGRectGetHeight(self.scrollView.frame));
+    self.scrollView.contentSize = CGSizeMake((self.scrollView.frame.size.width + 8) * numberPages, self.scrollView.frame.size.height);
     self.scrollView.showsHorizontalScrollIndicator = NO;
     self.scrollView.showsVerticalScrollIndicator = NO;
     self.scrollView.scrollsToTop = NO;
@@ -122,7 +122,6 @@
     [self loadScrollViewWithPage:page + 1];
     
     // a possible optimization would be to unload the views+controllers which are no longer visible
-    // Do that!!!
 }
 
 - (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
@@ -201,10 +200,20 @@
                 return;
             }
             
-            Coordinates *newCoordinates = [Coordinates CoordinatesWithLatitude:@"23.00" andWithLongitude:@"42.00"];
-            NSMutableArray *positions = [currentBird.observedPositions mutableCopy];
+            Coordinates *newCoordinates = [Coordinates CoordinatesWithLatitude:self.latitude andWithLongitude:self.longitude];
+            
+            NSMutableArray *positions = [NSMutableArray array];
+            if (currentBird.observedPositionsCoordinates){
+                positions = currentBird.observedPositionsCoordinates;
+            } else {
+                for (NSDictionary *location in currentBird.observedPositionsFromDb){
+                    Coordinates *currentPositions = [Coordinates coordinatesWithDict: location];
+                    [positions addObject:currentPositions];
+                }
+            }
+            
             [positions addObject:newCoordinates];
-            currentBird.observedPositions = positions;
+            currentBird.observedPositionsCoordinates = positions;
             
             dispatch_async(dispatch_get_main_queue(), ^{
                 UIAlertController *successAlertController = [UIAlertController alertControllerWithTitle:@"Adding coordinates done" message:@"Your current coordinates have been added to Birdy database." preferredStyle:UIAlertControllerStyleAlert];
