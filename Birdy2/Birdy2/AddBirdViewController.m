@@ -5,9 +5,10 @@
 #import "BirdsListViewController.h"
 #import "HttpData.h"
 #import <CoreLocation/CoreLocation.h>
+#import <QuartzCore/QuartzCore.h>
 
 @interface AddBirdViewController () <UIImagePickerControllerDelegate, UINavigationControllerDelegate, CLLocationManagerDelegate>
-- (IBAction)addNewBird:(id)sender;
+
 - (IBAction)addPhotoClick:(id)sender;
 @property (weak, nonatomic) IBOutlet UIImageView *birdImageView;
 @property (strong, nonatomic) NSString *imageString;
@@ -21,6 +22,8 @@
 @property (strong, nonatomic) NSString* latitude;
 @property (strong, nonatomic) NSString* longitude;
 
+- (IBAction)changePicture:(UILongPressGestureRecognizer *)sender;
+
 @end
 
 
@@ -32,6 +35,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    UIBarButtonItem* addBirdyItem = [[UIBarButtonItem alloc]initWithTitle:@"Done!" style:UIBarButtonItemStyleDone target:self action:@selector(addNewBird)];
+    self.navigationItem.rightBarButtonItem = addBirdyItem;
+    
     _url = @"https://protected-falls-94776.herokuapp.com/api/birds";
     self.http = [HttpData httpData];
     
@@ -42,6 +48,13 @@
         [self.locationManager requestWhenInUseAuthorization];
     }
     [self.locationManager startUpdatingLocation];
+    
+    [[self.birdDescriptionTextView layer] setBorderColor:[[UIColor grayColor] CGColor]];
+    [[self.birdDescriptionTextView layer] setBorderWidth:0.3];
+    [[self.birdDescriptionTextView layer] setCornerRadius:5];
+    
+    self.birdImageView.contentMode = UIViewContentModeScaleAspectFit;
+    self.birdImageView.userInteractionEnabled = YES;
 }
 
 
@@ -60,7 +73,7 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (IBAction)addNewBird:(id)sender {    
+- (IBAction)addNewBird {
     Bird *newBird = [Bird BirdWithName:self.birdNamelabel.text withLatinName:self.birdLatinNameLabel.text withDescription:self.birdDescriptionTextView.text withPic:self.imageString withLatitude:self.latitude andWithLongitude:self.longitude];
     
     [self saveBird:newBird];
@@ -132,5 +145,8 @@
         self.longitude = [NSString stringWithFormat:@"%.8f", currentLocation.coordinate.longitude];
         self.latitude = [NSString stringWithFormat:@"%.8f", currentLocation.coordinate.latitude];
     }
+}
+- (IBAction)changePicture:(UILongPressGestureRecognizer *)sender {
+    [self addPhotoClick:sender];
 }
 @end

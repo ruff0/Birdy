@@ -5,10 +5,7 @@
 @interface BirdController ()
 
 - (IBAction)seeLocations:(id)sender;
-@property (strong, nonatomic) NSMutableArray *locations;
-
 - (IBAction)birdImagepinch:(UIPinchGestureRecognizer *)sender;
-
 - (IBAction)birdImagePan:(UIPanGestureRecognizer *)sender;
 
 @end
@@ -19,16 +16,23 @@
     [super viewDidLoad];
     self.birdDescription.scrollsToTop = YES;
     
-    self.locations = [NSMutableArray array];
-    if (self.bird.observedPositionsCoordinates){
-        self.locations = self.bird.observedPositionsCoordinates;
-    } else {
+    NSMutableArray *locations = [NSMutableArray array];
+    if (!self.bird.observedPositionsCoordinates){
         for (NSDictionary *location in self.bird.observedPositionsFromDb){
             Coordinates *currentPositions = [Coordinates coordinatesWithDict: location];
-            [self.locations addObject:currentPositions];
+            [locations addObject:currentPositions];
         }
     }
+    self.bird.observedPositionsCoordinates = locations;
     
+    self.birdName.text = self.bird.name;
+    self.birdLatinName.text = self.bird.latinName;
+    self.birdDescription.text = self.bird.descr;
+    
+    NSString *imageUrl = self.bird.picture;
+    NSData *pictureData = [[NSData alloc]initWithBase64EncodedString:imageUrl options:NSDataBase64DecodingIgnoreUnknownCharacters];
+    self.birdImageView.image = [UIImage imageWithData:pictureData];
+    self.birdImageView.contentMode = UIViewContentModeScaleAspectFit;
     self.birdImageView.userInteractionEnabled = YES;
 }
 
@@ -38,32 +42,12 @@
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    
-    
 }
 
 - (IBAction)seeLocations:(id)sender {
     LocationsViewController *locationsController = [[LocationsViewController alloc]init];
-    locationsController.locations = self.locations;
+    locationsController.locations = self.bird.observedPositionsCoordinates;
     [self.navigationController pushViewController:locationsController animated:YES];
-}
-
-- (IBAction)birdIePinch:(UIPinchGestureRecognizer *)sender {
-    if (sender.state == UIGestureRecognizerStateEnded || sender.state == UIGestureRecognizerStateChanged) {
-        CGFloat currentScale = self.birdImageView.frame.size.width / self.birdImageView.bounds.size.width;
-        CGFloat newScale = currentScale * sender.scale;
-        
-        if (newScale < 0.3) {
-            newScale = 0.3;
-        }
-        if (newScale > 3) {
-             newScale = 3;
-        }
-        
-        CGAffineTransform transform = CGAffineTransformMakeScale(newScale, newScale);
-        self.birdImageView.transform = transform;
-        sender.scale = 1;
-    }
 }
 
 - (IBAction)birdImagepinch:(UIPinchGestureRecognizer *)sender {

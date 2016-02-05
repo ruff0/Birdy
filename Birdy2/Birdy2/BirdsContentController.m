@@ -96,15 +96,6 @@
         [self addChildViewController:controller];
         [self.scrollView addSubview:controller.view];
         [controller didMoveToParentViewController:self];
-        
-        controller.birdName.text = currentBird.name;
-        controller.birdLatinName.text = currentBird.latinName;
-        controller.birdDescription.text = currentBird.descr;
-        
-        NSString *imageUrl = currentBird.picture;
-        NSData *pictureData = [[NSData alloc]initWithBase64EncodedString:imageUrl options:NSDataBase64DecodingIgnoreUnknownCharacters];
-        controller.birdImageView.image = [UIImage imageWithData:pictureData];
-        controller.birdImageView.contentMode = UIViewContentModeScaleAspectFit;
     }
 }
 
@@ -201,8 +192,9 @@
             }
             
             Coordinates *newCoordinates = [Coordinates CoordinatesWithLatitude:self.latitude andWithLongitude:self.longitude];
+            [currentBird.observedPositionsCoordinates addObject:newCoordinates];
             
-            NSMutableArray *positions = [NSMutableArray array];
+            /*NSMutableArray *positions = [NSMutableArray array];
             if (currentBird.observedPositionsCoordinates){
                 positions = currentBird.observedPositionsCoordinates;
             } else {
@@ -213,7 +205,7 @@
             }
             
             [positions addObject:newCoordinates];
-            currentBird.observedPositionsCoordinates = positions;
+            currentBird.observedPositionsCoordinates = positions;*/
             
             dispatch_async(dispatch_get_main_queue(), ^{
                 UIAlertController *successAlertController = [UIAlertController alertControllerWithTitle:@"Adding coordinates done" message:@"Your current coordinates have been added to Birdy database." preferredStyle:UIAlertControllerStyleAlert];
