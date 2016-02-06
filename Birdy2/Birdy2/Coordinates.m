@@ -39,6 +39,11 @@
     return [[self alloc] initWithLatitude:aLat andWithLongitude:aLon];
 }
 
++(instancetype)CoordinatesWithLatitude:(NSString*)aLat
+                      andWithLongitude:(NSString*)aLon
+                        andWithBirdyId:(NSString*)aId{
+    return [[self alloc] initWithLatitude:aLat withLongitude:aLon andWithBirdyId:aId];
+}
 
 -initWithDict: (NSDictionary*) dict {
     return [self initWithLatitude:[dict objectForKey:@"longitude"]

@@ -17,8 +17,16 @@
 - (id)initWithLatitude:(NSString *)aLat
       andWithLongitude:(NSString *)aLon;
 
+- (id)initWithLatitude:(NSString *)aLat
+         withLongitude:(NSString *)aLon
+        andWithBirdyId:(NSString*)aId;
+
 +(instancetype)CoordinatesWithLatitude:(NSString*)aLat
                andWithLongitude:(NSString*)aLon;
+
++(instancetype)CoordinatesWithLatitude:(NSString*)aLat
+                      andWithLongitude:(NSString*)aLon
+                        andWithBirdyId:(NSString*)aId;
 
 -initWithDict: (NSDictionary*) dict;
 

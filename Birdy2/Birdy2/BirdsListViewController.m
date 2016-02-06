@@ -27,9 +27,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.loadingIndicator = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(145, 190, 20,20)];
+    self.loadingIndicator = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width,self.view.frame.size.height)];
     [self.loadingIndicator setActivityIndicatorViewStyle:UIActivityIndicatorViewStyleGray];
     [self.loadingIndicator setHidesWhenStopped:YES];
+    [self.loadingIndicator setBackgroundColor:[UIColor colorWithRed:50.0 green:50.0 blue:50.0 alpha:0.5]];
     [self.view addSubview:self.loadingIndicator];
     
     self.title = @"Birdy list";
@@ -304,6 +305,12 @@
         [theCurrentCoordinates setValue:coords.latitude forKey:@"latitude"];
         [theCurrentCoordinates setValue:coords.longitude forKey:@"longitude"];
         [theCurrentCoordinates setValue:coords.birdyId forKey:@"birdyId"];
+    }
+    
+    NSError *coreDataErr;
+    if (![self.managedContext save:&coreDataErr]) {
+        NSLog(@"Error saving coordinates to core data: %@\n%@", [coreDataErr localizedDescription], [coreDataErr userInfo]);
+        return;
     }
 }
 

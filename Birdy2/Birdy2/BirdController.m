@@ -43,7 +43,6 @@
 
 -(NSMutableArray*) getCoordinatesFromCd:(NSString*) birdId {
     // Here I am getting the coordinates of the current bird from CD
-    // I should modify this to get the coordinates only for one bird
     
     NSError *fetchErrorCoordinates = nil;
     NSFetchRequest *coordinatesRequest = [[NSFetchRequest alloc]initWithEntityName:@"Coordinates"];

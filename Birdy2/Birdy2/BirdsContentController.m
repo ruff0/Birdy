@@ -3,6 +3,8 @@
 #import "HttpData.h"
 #import "Coordinates.h"
 #import <CoreLocation/CoreLocation.h>
+#import <CoreData/CoreData.h>
+#import "AppDelegate.h"
 
 @interface BirdsContentController ()<CLLocationManagerDelegate>
 
@@ -159,6 +161,10 @@
     [self gotoPage:YES];
 }
 
+-(NSManagedObjectContext*) managedContext {
+    return((AppDelegate*) [UIApplication sharedApplication].delegate).managedObjectContext;
+}
+
 - (void) addCoordinates {
     self.alertController = [UIAlertController alertControllerWithTitle:@"Adding new coordinates" message:@"You are about to add your current location as a place where this bird has been observed. Do you want to continue?" preferredStyle:UIAlertControllerStyleAlert];
     
@@ -168,9 +174,12 @@
         
         Bird *currentBird = [[weakSelf birdsArray] objectAtIndex:self.pageCOntrol.currentPage];
         NSString *currentBirdId = [currentBird id];
+        NSString *lat = self.latitude;
+        NSString *lon = self.longitude;
+        
         NSDictionary *header = [[NSDictionary alloc] initWithObjectsAndKeys:@"application/json", @"content-type", nil];
         NSString *url = [_baseUrl stringByAppendingString:currentBirdId];
-        NSDictionary *currentCoordinates = [[NSDictionary alloc]initWithObjectsAndKeys:self.latitude, @"latitude", self.longitude, @"longitude", nil];
+        NSDictionary *currentCoordinates = [[NSDictionary alloc]initWithObjectsAndKeys:lat, @"latitude", lon, @"longitude", nil];
         
         [[weakSelf http] putAt:url withBody:currentCoordinates headers:header andCompletionHandler:^(NSDictionary *dict, NSError *err) {
 
@@ -191,24 +200,9 @@
                 return;
             }
             
-            // Implemnt the below with coredata!
-            
-            Coordinates *newCoordinates = [Coordinates CoordinatesWithLatitude:self.latitude andWithLongitude:self.longitude];
-            [currentBird.observedPositionsCoordinates addObject:newCoordinates];
-            
-            /*NSMutableArray *positions = [NSMutableArray array];
-            if (currentBird.observedPositionsCoordinates){
-                positions = currentBird.observedPositionsCoordinates;
-            } else {
-                for (NSDictionary *location in currentBird.observedPositionsFromDb){
-                    Coordinates *currentPositions = [Coordinates coordinatesWithDict: location];
-                    [positions addObject:currentPositions];
-                }
-            }
-            
-            [positions addObject:newCoordinates];
-            currentBird.observedPositionsCoordinates = positions;*/
-            
+            Coordinates *newCoordinates = [Coordinates CoordinatesWithLatitude:lat andWithLongitude:lon andWithBirdyId:currentBird.id];
+            [self saveCoordinatesToCd:newCoordinates];
+
             dispatch_async(dispatch_get_main_queue(), ^{
                 UIAlertController *successAlertController = [UIAlertController alertControllerWithTitle:@"Adding coordinates done" message:@"Your current coordinates have been added to Birdy database." preferredStyle:UIAlertControllerStyleAlert];
                 UIAlertAction *actionOk = [UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDefault handler:nil];
@@ -225,6 +219,21 @@
     [self.alertController addAction:okAction];
     
     [self presentViewController:self.alertController animated:YES completion:nil];
+}
+
+-(void) saveCoordinatesToCd:(Coordinates*) newCoordinates {
+    NSEntityDescription *coordinatesDescription = [NSEntityDescription entityForName:@"Coordinates" inManagedObjectContext:self.managedContext];
+
+    NSManagedObject *theCurrentCoordinates = [[NSManagedObject alloc] initWithEntity:coordinatesDescription insertIntoManagedObjectContext:self.managedContext];
+    [theCurrentCoordinates setValue:newCoordinates.latitude forKey:@"latitude"];
+    [theCurrentCoordinates setValue:newCoordinates.longitude forKey:@"longitude"];
+    [theCurrentCoordinates setValue:newCoordinates.birdyId forKey:@"birdyId"];
+    
+    NSError *coreDataErr;
+    if (![self.managedContext save:&coreDataErr]) {
+        NSLog(@"Error saving coordinates to core data: %@\n%@", [coreDataErr localizedDescription], [coreDataErr userInfo]);
+        return;
+    }
 }
 
 -(void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray<CLLocation *> *)locations {

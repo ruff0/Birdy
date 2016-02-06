@@ -22,6 +22,8 @@
 @property (strong, nonatomic) NSString* latitude;
 @property (strong, nonatomic) NSString* longitude;
 
+@property (strong, nonatomic) UIActivityIndicatorView *loadingIndicator;
+
 - (IBAction)changePicture:(UILongPressGestureRecognizer *)sender;
 
 @end
@@ -55,6 +57,12 @@
     
     self.birdImageView.contentMode = UIViewContentModeScaleAspectFit;
     self.birdImageView.userInteractionEnabled = YES;
+    
+    self.loadingIndicator = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
+    [self.loadingIndicator setActivityIndicatorViewStyle:UIActivityIndicatorViewStyleGray];
+    [self.loadingIndicator setHidesWhenStopped:YES];
+    [self.loadingIndicator setBackgroundColor:[UIColor colorWithRed:50.0 green:50.0 blue:50.0 alpha:0.5]];
+    [self.view addSubview:self.loadingIndicator];
 }
 
 
@@ -77,11 +85,6 @@
     Bird *newBird = [Bird BirdWithName:self.birdNamelabel.text withLatinName:self.birdLatinNameLabel.text withDescription:self.birdDescriptionTextView.text withPic:self.imageString withLatitude:self.latitude andWithLongitude:self.longitude];
     
     [self saveBird:newBird];
-    
-    /*Bird *bird = [Bird BirdWithId:@"5" withName:@"Kanarche" withLatinName:@"Canari de vanari" withPictureUrl:@"6" withDescription:@"Kanarcheta live on the Canary ilands." andWithObservedAt:[NSArray arrayWithObjects: @"here", @"there", nil]];
-    
-    AppDelegate *delegate = [UIApplication sharedApplication].delegate;
-    [delegate.data addBird:bird];*/
 }
 
 -(void) saveBird:(Bird*)newBird {
@@ -90,6 +93,8 @@
     NSDictionary *dictionaryBird = [newBird dict];
     
     NSDictionary *header = [[NSDictionary alloc] initWithObjectsAndKeys:@"application/json", @"content-type", nil];
+
+    [self.loadingIndicator startAnimating];
     
     [self.http postAt:_url withBody:dictionaryBird headers:header andCompletionHandler:^(NSDictionary *dict, NSError *err) {
         NSInteger responseStatusNumber = 200;
@@ -101,11 +106,13 @@
         
         if(err || (responseStatusNumber >= 400)){
             dispatch_async(dispatch_get_main_queue(), ^{
+                [[weakSelf loadingIndicator] stopAnimating];
                 UIAlertController *failAlertController = [UIAlertController alertControllerWithTitle:@"Adding birdy failed" message:@"Network access or connectivity problems terminated the action." preferredStyle:UIAlertControllerStyleAlert];
                 UIAlertAction *actionOk = [UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDefault handler:nil];
                 [failAlertController addAction:actionOk];
                 [weakSelf presentViewController:failAlertController animated:YES completion:nil];
             });
+            
             return;
         }
         
@@ -115,7 +122,13 @@
             NSData *pictureData = [[NSData alloc]initWithBase64EncodedString:resultsBird.picture options:NSDataBase64DecodingIgnoreUnknownCharacters];
             self.birdImageView.image = [UIImage imageWithData:pictureData];
             
-            // [[weakSelf navigationController] popViewControllerAnimated:YES];
+            [[weakSelf loadingIndicator] stopAnimating];
+            UIAlertController *successAlertController = [UIAlertController alertControllerWithTitle:@"Adding birdy successful" message:@"" preferredStyle:UIAlertControllerStyleAlert];
+            UIAlertAction *actionOk = [UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDefault handler:nil];
+            [successAlertController addAction:actionOk];
+            [weakSelf presentViewController:successAlertController animated:YES completion:nil];
+            
+            [[weakSelf navigationController] popViewControllerAnimated:YES];
         });
     }];
 }
