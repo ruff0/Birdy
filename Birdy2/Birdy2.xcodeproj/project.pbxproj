@@ -24,6 +24,9 @@
 		DA6BB5191C64F7DE00469D64 /* LocationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA6BB5181C64F7DE00469D64 /* LocationsViewController.swift */; };
 		DA818C441C61443F00B915A6 /* BirdAndDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = DA818C431C61443F00B915A6 /* BirdAndDictionary.m */; };
 		DA818C471C6146D200B915A6 /* HttpData.m in Sources */ = {isa = PBXBuildFile; fileRef = DA818C461C6146D200B915A6 /* HttpData.m */; };
+		DAC73DCC1C66485D00EDBBE3 /* LastUpdatedOn.plist in Resources */ = {isa = PBXBuildFile; fileRef = DAC73DCB1C66485D00EDBBE3 /* LastUpdatedOn.plist */; };
+		DAD61FD41C6609E7009CE1E5 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAD61FD21C66098A009CE1E5 /* CoreData.framework */; };
+		DAD61FFD1C660E48009CE1E5 /* BirdyDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = DAD61FFB1C660E48009CE1E5 /* BirdyDataModel.xcdatamodeld */; };
 		DADBA8581C63D14B002DDFFD /* Coordinates.m in Sources */ = {isa = PBXBuildFile; fileRef = DADBA8571C63D14A002DDFFD /* Coordinates.m */; };
 /* End PBXBuildFile section */
 
@@ -59,6 +62,9 @@
 		DA818C431C61443F00B915A6 /* BirdAndDictionary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BirdAndDictionary.m; sourceTree = "<group>"; };
 		DA818C451C6146D200B915A6 /* HttpData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HttpData.h; sourceTree = "<group>"; };
 		DA818C461C6146D200B915A6 /* HttpData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HttpData.m; sourceTree = "<group>"; };
+		DAC73DCB1C66485D00EDBBE3 /* LastUpdatedOn.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = LastUpdatedOn.plist; sourceTree = "<group>"; };
+		DAD61FD21C66098A009CE1E5 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		DAD61FFC1C660E48009CE1E5 /* BirdyDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = BirdyDataModel.xcdatamodel; sourceTree = "<group>"; };
 		DADBA8561C63D14A002DDFFD /* Coordinates.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Coordinates.h; sourceTree = "<group>"; };
 		DADBA8571C63D14A002DDFFD /* Coordinates.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Coordinates.m; sourceTree = "<group>"; };
 		DF08D8CAE26CD041944FEF40 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
@@ -69,6 +75,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DAD61FD41C6609E7009CE1E5 /* CoreData.framework in Frameworks */,
 				4511C03BA18497B9E38DAFFE /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -88,6 +95,7 @@
 		550FA76266BB70A411822BB3 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				DAD61FD21C66098A009CE1E5 /* CoreData.framework */,
 				A66973590FA298F1534D35B8 /* libPods.a */,
 			);
 			name = Frameworks;
@@ -125,6 +133,8 @@
 				DA59014A1C5E4424002A173F /* LaunchScreen.storyboard */,
 				DA59014D1C5E4424002A173F /* Info.plist */,
 				DA59013C1C5E4424002A173F /* Supporting Files */,
+				DAD61FFB1C660E48009CE1E5 /* BirdyDataModel.xcdatamodeld */,
+				DAC73DCB1C66485D00EDBBE3 /* LastUpdatedOn.plist */,
 			);
 			path = Birdy2;
 			sourceTree = "<group>";
@@ -248,6 +258,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DAC73DCC1C66485D00EDBBE3 /* LastUpdatedOn.plist in Resources */,
 				DA59014C1C5E4424002A173F /* LaunchScreen.storyboard in Resources */,
 				DA5901681C5E906F002A173F /* CellCustomView.xib in Resources */,
 				DA5901491C5E4424002A173F /* Assets.xcassets in Resources */,
@@ -316,6 +327,7 @@
 				DADBA8581C63D14B002DDFFD /* Coordinates.m in Sources */,
 				DA5901411C5E4424002A173F /* AppDelegate.m in Sources */,
 				DA6765C31C5FD55F00B4FD6F /* BirdsContentController.m in Sources */,
+				DAD61FFD1C660E48009CE1E5 /* BirdyDataModel.xcdatamodeld in Sources */,
 				DA59015A1C5E4B63002A173F /* Bird.m in Sources */,
 				DA818C471C6146D200B915A6 /* HttpData.m in Sources */,
 				DA6BB5191C64F7DE00469D64 /* LocationsViewController.swift in Sources */,
@@ -483,6 +495,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		DAD61FFB1C660E48009CE1E5 /* BirdyDataModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				DAD61FFC1C660E48009CE1E5 /* BirdyDataModel.xcdatamodel */,
+			);
+			currentVersion = DAD61FFC1C660E48009CE1E5 /* BirdyDataModel.xcdatamodel */;
+			path = BirdyDataModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = DA5901311C5E4423002A173F /* Project object */;
 }

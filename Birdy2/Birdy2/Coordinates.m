@@ -21,17 +21,42 @@
     return self;
 }
 
+- (id)initWithLatitude:(NSString *)aLat
+      withLongitude:(NSString *)aLon
+        andWithBirdyId:(NSString*)aId {
+    self = [super init];
+    if (self) {
+        self.latitude = aLat;
+        self.longitude = aLon;
+        self.birdyId = aId;
+    }
+    
+    return self;
+}
+
 +(instancetype)CoordinatesWithLatitude:(NSString*)aLat
                andWithLongitude:(NSString*)aLon {
     return [[self alloc] initWithLatitude:aLat andWithLongitude:aLon];
 }
 
+
 -initWithDict: (NSDictionary*) dict {
-    return [self initWithLatitude:[dict objectForKey:@"longitude"] andWithLongitude:[dict objectForKey:@"latitude"]];
+    return [self initWithLatitude:[dict objectForKey:@"longitude"]
+                 andWithLongitude:[dict objectForKey:@"latitude"]];
+}
+
+-initWithDictAndBirdId: (NSDictionary*) dict {
+    return [self initWithLatitude:[dict objectForKey:@"longitude"]
+                    withLongitude:[dict objectForKey:@"latitude"]
+                   andWithBirdyId:[dict objectForKey:@"birdyId"]];
 }
 
 +(Coordinates *) coordinatesWithDict: (NSDictionary *) dict {
     return [[Coordinates alloc] initWithDict:dict];
+}
+
++(Coordinates *) coordinatesWithDictAndBirdId: (NSDictionary *) dict {
+    return [[Coordinates alloc] initWithDictAndBirdId:dict];
 }
 
 -(id) dict {

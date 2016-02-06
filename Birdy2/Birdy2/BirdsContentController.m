@@ -166,7 +166,7 @@
     
     UIAlertAction *okAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"OK", @"OK action") style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
         
-        Bird *currentBird = [self.birdsArray objectAtIndex:self.pageCOntrol.currentPage];
+        Bird *currentBird = [[weakSelf birdsArray] objectAtIndex:self.pageCOntrol.currentPage];
         NSString *currentBirdId = [currentBird id];
         NSDictionary *header = [[NSDictionary alloc] initWithObjectsAndKeys:@"application/json", @"content-type", nil];
         NSString *url = [_baseUrl stringByAppendingString:currentBirdId];
@@ -190,6 +190,8 @@
                 });
                 return;
             }
+            
+            // Implemnt the below with coredata!
             
             Coordinates *newCoordinates = [Coordinates CoordinatesWithLatitude:self.latitude andWithLongitude:self.longitude];
             [currentBird.observedPositionsCoordinates addObject:newCoordinates];

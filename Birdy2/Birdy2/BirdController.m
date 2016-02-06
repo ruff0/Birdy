@@ -1,6 +1,8 @@
 #import "BirdController.h"
 #import "Birdy2-Swift.h"
 #import "Coordinates.h"
+#import <CoreData/CoreData.h>
+#import "AppDelegate.h"
 
 @interface BirdController ()
 
@@ -14,20 +16,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.birdDescription.scrollsToTop = YES;
-    
-    NSMutableArray *locations = [NSMutableArray array];
-    if (!self.bird.observedPositionsCoordinates){
-        for (NSDictionary *location in self.bird.observedPositionsFromDb){
-            Coordinates *currentPositions = [Coordinates coordinatesWithDict: location];
-            [locations addObject:currentPositions];
-        }
-    }
-    self.bird.observedPositionsCoordinates = locations;
     
     self.birdName.text = self.bird.name;
     self.birdLatinName.text = self.bird.latinName;
     self.birdDescription.text = self.bird.descr;
+    self.birdDescription.scrollsToTop = YES;
     
     NSString *imageUrl = self.bird.picture;
     NSData *pictureData = [[NSData alloc]initWithBase64EncodedString:imageUrl options:NSDataBase64DecodingIgnoreUnknownCharacters];
@@ -44,9 +37,41 @@
     [super didReceiveMemoryWarning];
 }
 
+-(NSManagedObjectContext*) managedContext {
+    return((AppDelegate*)[UIApplication sharedApplication].delegate).managedObjectContext;
+}
+
+-(NSMutableArray*) getCoordinatesFromCd:(NSString*) birdId {
+    // Here I am getting the coordinates of the current bird from CD
+    // I should modify this to get the coordinates only for one bird
+    
+    NSError *fetchErrorCoordinates = nil;
+    NSFetchRequest *coordinatesRequest = [[NSFetchRequest alloc]initWithEntityName:@"Coordinates"];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat: @"birdyId == %@", birdId];
+    [coordinatesRequest setPredicate:predicate];
+    
+    NSArray *coordinatesFromCoreData = [self.managedContext executeFetchRequest:coordinatesRequest error:&fetchErrorCoordinates];
+    if (fetchErrorCoordinates) {
+        NSLog(@"Error fetching birdies from core data: %@\n%@", [fetchErrorCoordinates localizedDescription], [fetchErrorCoordinates userInfo]);
+        return nil;
+    }
+    
+    NSMutableArray *coordinates = [[NSMutableArray alloc]init];
+    for (NSManagedObject *cdCoordinates in coordinatesFromCoreData) {
+        NSString *latitude = [cdCoordinates valueForKey:@"latitude"];
+        NSString *longitude = [cdCoordinates valueForKey:@"longitude"];
+        
+        Coordinates *currentCoordinates = [Coordinates CoordinatesWithLatitude:latitude andWithLongitude:longitude];
+        
+        [coordinates addObject:currentCoordinates];
+    };
+    
+    return coordinates;
+}
+
 - (IBAction)seeLocations:(id)sender {
     LocationsViewController *locationsController = [[LocationsViewController alloc]init];
-    locationsController.locations = self.bird.observedPositionsCoordinates;
+    locationsController.locations = [self getCoordinatesFromCd:self.bird.id];
     [self.navigationController pushViewController:locationsController animated:YES];
 }
 

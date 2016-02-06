@@ -12,6 +12,7 @@
 
 @property (strong, nonatomic) NSString *latitude;
 @property (strong, nonatomic) NSString *longitude;
+@property (strong, nonatomic) NSString *birdyId;
 
 - (id)initWithLatitude:(NSString *)aLat
       andWithLongitude:(NSString *)aLon;
@@ -22,6 +23,8 @@
 -initWithDict: (NSDictionary*) dict;
 
 +(Coordinates *) coordinatesWithDict: (NSDictionary *) dict;
+
++(Coordinates *) coordinatesWithDictAndBirdId: (NSDictionary *) dict;
 
 - dict;
 
