@@ -36,6 +36,7 @@
     
     self.locationManager = [[CLLocationManager alloc]init];
     self.locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters;
+    self.locationManager.distanceFilter = kCLLocationAccuracyHundredMeters;
     self.locationManager.delegate = self;
     if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0) {
         [self.locationManager requestWhenInUseAuthorization];
@@ -161,6 +162,13 @@
     [self gotoPage:YES];
 }
 
+-(void) showErrorAlert:(NSString*) message {
+    UIAlertController *validationAlertController = [UIAlertController alertControllerWithTitle:@"Input validation failed" message:message preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *actionOk = [UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDefault handler:nil];
+    [validationAlertController addAction:actionOk];
+    [self presentViewController:validationAlertController animated:YES completion:nil];
+}
+
 -(NSManagedObjectContext*) managedContext {
     return((AppDelegate*) [UIApplication sharedApplication].delegate).managedObjectContext;
 }
@@ -171,6 +179,11 @@
     __weak id weakSelf = self;
     
     UIAlertAction *okAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"OK", @"OK action") style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        
+        if (self.latitude == nil || [self.latitude isEqualToString:@""] || self.longitude == nil || [self.longitude isEqualToString:@""]) {
+            [self showErrorAlert:@"Your current coordinates cannot be obtained."];
+            return;
+        }
         
         Bird *currentBird = [[weakSelf birdsArray] objectAtIndex:self.pageCOntrol.currentPage];
         NSString *currentBirdId = [currentBird id];

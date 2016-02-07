@@ -7,6 +7,7 @@
         <attribute name="latinName" attributeType="String" syncable="YES"/>
         <attribute name="name" attributeType="String" syncable="YES"/>
         <attribute name="picture" attributeType="String" syncable="YES"/>
+        <attribute name="temporary" optional="YES" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
         <relationship name="observedPositions" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Coordinates" inverseName="bird" inverseEntity="Coordinates" syncable="YES"/>
         <uniquenessConstraints>
             <uniquenessConstraint>
@@ -23,7 +24,7 @@
         <relationship name="bird" optional="YES" maxCount="1" deletionRule="No Action" destinationEntity="Bird" inverseName="observedPositions" inverseEntity="Bird" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Bird" positionX="-63" positionY="-18" width="128" height="150"/>
+        <element name="Bird" positionX="-63" positionY="-18" width="128" height="165"/>
         <element name="Coordinates" positionX="-54" positionY="36" width="128" height="105"/>
     </elements>
 </model>

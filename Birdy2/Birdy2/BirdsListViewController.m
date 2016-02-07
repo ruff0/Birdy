@@ -30,7 +30,7 @@
     self.loadingIndicator = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width,self.view.frame.size.height)];
     [self.loadingIndicator setActivityIndicatorViewStyle:UIActivityIndicatorViewStyleGray];
     [self.loadingIndicator setHidesWhenStopped:YES];
-    [self.loadingIndicator setBackgroundColor:[UIColor colorWithRed:50.0 green:50.0 blue:50.0 alpha:0.5]];
+    [self.loadingIndicator setBackgroundColor:[UIColor colorWithRed:0.5 green:0.5 blue:0.5 alpha:0.5]];
     [self.view addSubview:self.loadingIndicator];
     
     self.title = @"Birdy list";
@@ -130,10 +130,6 @@
     }
 }
 
--(NSManagedObjectContext*) managedContext {
-     return((AppDelegate*) [UIApplication sharedApplication].delegate).managedObjectContext;
-}
-
 -(void) loadBirds {
     [self getBirdsFromCd];
     if (!self.searchResults || self.searchResults.count == 0) {
@@ -145,9 +141,10 @@
 
 - (void) getBirdsFromCd {
     // Here I should get the birds from core data
+    NSManagedObjectContext  *managedContext = ((AppDelegate*) [UIApplication sharedApplication].delegate).managedObjectContext;
     NSError *fetchError = nil;
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc]initWithEntityName:@"Bird"];
-    NSArray *birdsFromCoreData = [self.managedContext executeFetchRequest:fetchRequest error:&fetchError];
+    NSArray *birdsFromCoreData = [managedContext executeFetchRequest:fetchRequest error:&fetchError];
     if (fetchError) {
         NSLog(@"Error fetching birdies from core data: %@\n%@", [fetchError localizedDescription], [fetchError userInfo]);
         return;
@@ -196,7 +193,7 @@
             return;
         }
         
-        [self saveNewLastUpdatedDate];
+        [weakSelf saveNewLastUpdatedDate];
         NSMutableArray *dataResultBirds = [NSMutableArray array];
         for (NSDictionary *dictBird in dict){
             Bird *currentBird = [Bird birdWithDict: dictBird];
@@ -214,11 +211,12 @@
 }
 
 - (void) saveBirdsToCd:(NSMutableArray*)resultsBirds {
-    NSEntityDescription *birdDescription = [NSEntityDescription entityForName:@"Bird" inManagedObjectContext:self.managedContext];
-    NSEntityDescription *coordinatesDescription = [NSEntityDescription entityForName:@"Coordinates" inManagedObjectContext:self.managedContext];
+    NSManagedObjectContext  *managedContext = ((AppDelegate*) [UIApplication sharedApplication].delegate).managedObjectContext;
+    NSEntityDescription *birdDescription = [NSEntityDescription entityForName:@"Bird" inManagedObjectContext:managedContext];
+    NSEntityDescription *coordinatesDescription = [NSEntityDescription entityForName:@"Coordinates" inManagedObjectContext:managedContext];
     
     for (Bird *birdy in resultsBirds){
-        NSManagedObject *theCurrentBird = [[NSManagedObject alloc] initWithEntity:birdDescription insertIntoManagedObjectContext:self.managedContext];
+        NSManagedObject *theCurrentBird = [[NSManagedObject alloc] initWithEntity:birdDescription insertIntoManagedObjectContext:managedContext];
         [theCurrentBird setValue:birdy.id forKey:@"id"];
         [theCurrentBird setValue:birdy.name forKey:@"name"];
         [theCurrentBird setValue:birdy.latinName forKey:@"latinName"];
@@ -227,7 +225,7 @@
         
         for (NSDictionary *location in birdy.observedPositionsFromDb){
             Coordinates *currentPositions = [Coordinates coordinatesWithDict: location];
-            NSManagedObject *theCurrentCoordinates = [[NSManagedObject alloc] initWithEntity:coordinatesDescription insertIntoManagedObjectContext:self.managedContext];
+            NSManagedObject *theCurrentCoordinates = [[NSManagedObject alloc] initWithEntity:coordinatesDescription insertIntoManagedObjectContext:managedContext];
             [theCurrentCoordinates setValue:currentPositions.latitude forKey:@"latitude"];
             [theCurrentCoordinates setValue:currentPositions.longitude forKey:@"longitude"];
             [theCurrentCoordinates setValue:birdy.id forKey:@"birdyId"];
@@ -236,7 +234,7 @@
     }
     
     NSError *coreDataErr;
-    if (![self.managedContext save:&coreDataErr]) {
+    if (![managedContext save:&coreDataErr]) {
         NSLog(@"Error saving birdies to core data: %@\n%@", [coreDataErr localizedDescription], [coreDataErr userInfo]);
         return;
     }
@@ -267,7 +265,7 @@
             return;
         }
         
-        [self saveNewLastUpdatedDate];
+        [weakSelf saveNewLastUpdatedDate];
         NSDictionary *birdsResults = [dict objectForKey:@"birds"];
         NSDictionary *coordinatesResults = [dict objectForKey:@"coordinates"];
         
@@ -278,7 +276,7 @@
                 [dataResultCoordinates addObject: currentCoordinates];
             }
             
-            [self saveCoordinatesToCd:dataResultCoordinates];
+            [weakSelf saveCoordinatesToCd:dataResultCoordinates];
         }
         
         if (birdsResults) {
@@ -287,8 +285,10 @@
                 Bird *currentBird = [Bird birdWithDict: dictBird];
                 [dataResultBirds addObject: currentBird];
             }
-            [self saveBirdsToCd:dataResultBirds];
-            [self getBirdsFromCd];
+            
+            [weakSelf removeTemporaryEntriesFromCd];
+            [weakSelf saveBirdsToCd:dataResultBirds];
+            [weakSelf getBirdsFromCd];
             
             dispatch_async(dispatch_get_main_queue(), ^{
                 [[weakSelf tableView] reloadData];
@@ -298,18 +298,43 @@
 }
 
 -(void) saveCoordinatesToCd:(NSMutableArray*) newCoordinates {
-    NSEntityDescription *coordinatesDescription = [NSEntityDescription entityForName:@"Coordinates" inManagedObjectContext:self.managedContext];
+    NSManagedObjectContext  *managedContext = ((AppDelegate*) [UIApplication sharedApplication].delegate).managedObjectContext;
+    NSEntityDescription *coordinatesDescription = [NSEntityDescription entityForName:@"Coordinates" inManagedObjectContext:managedContext];
     
     for (Coordinates *coords in newCoordinates){
-        NSManagedObject *theCurrentCoordinates = [[NSManagedObject alloc] initWithEntity:coordinatesDescription insertIntoManagedObjectContext:self.managedContext];
+        NSManagedObject *theCurrentCoordinates = [[NSManagedObject alloc] initWithEntity:coordinatesDescription insertIntoManagedObjectContext:managedContext];
         [theCurrentCoordinates setValue:coords.latitude forKey:@"latitude"];
         [theCurrentCoordinates setValue:coords.longitude forKey:@"longitude"];
         [theCurrentCoordinates setValue:coords.birdyId forKey:@"birdyId"];
     }
     
     NSError *coreDataErr;
-    if (![self.managedContext save:&coreDataErr]) {
+    if (![managedContext save:&coreDataErr]) {
         NSLog(@"Error saving coordinates to core data: %@\n%@", [coreDataErr localizedDescription], [coreDataErr userInfo]);
+        return;
+    }
+}
+
+- (void) removeTemporaryEntriesFromCd {
+    NSManagedObjectContext  *managedContext = ((AppDelegate*) [UIApplication sharedApplication].delegate).managedObjectContext;
+    NSError *fetchTemporaryError = nil;
+    NSFetchRequest *temporaryRequest = [[NSFetchRequest alloc]initWithEntityName:@"Bird"];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat: @"temporary == YES"];
+    [temporaryRequest setPredicate:predicate];
+    
+    NSArray *temporaryFromCoreData = [managedContext executeFetchRequest:temporaryRequest error:&fetchTemporaryError];
+    if (fetchTemporaryError) {
+        NSLog(@"Error fetching birdies from core data: %@\n%@", [fetchTemporaryError localizedDescription], [fetchTemporaryError userInfo]);
+        return;
+    }
+    
+    for (NSManagedObject *cdTemporary in temporaryFromCoreData) {
+        [managedContext deleteObject:cdTemporary];
+    };
+    
+    NSError *coreDataErr;
+    if (![managedContext save:&coreDataErr]) {
+        NSLog(@"Error removing birdies from core data: %@\n%@", [coreDataErr localizedDescription], [coreDataErr userInfo]);
         return;
     }
 }
