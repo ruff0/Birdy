@@ -34,10 +34,9 @@
     [self.view addSubview:self.loadingIndicator];
     
     UIImageView *scriptLogoView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"scriptLogo"]];
-    // 	scriptLogoView.frame.size.height = 50;
-    
+    scriptLogoView.contentMode = UIViewContentModeScaleAspectFit;
+    scriptLogoView.frame = CGRectMake(0, 0, 30.0, 30.0);
     self.navigationItem.titleView = scriptLogoView;
-    //self.title = @"Birdy list";
     
     UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(insertNewBird)];
     self.navigationItem.rightBarButtonItem = addButton;
@@ -123,15 +122,21 @@
 
 - (void)updateFilteredContentForBirdName:(NSString *)newName {
     if (newName == nil || [newName length] == 0) {
-        self.searchResults = [self.birds mutableCopy];
+        [self getBirdsFromCd];
     } else {
-        NSMutableArray *searchResults = [[NSMutableArray alloc] init];
-        for (Bird *bird in self.birds) {
-            if ([[bird.name lowercaseString] containsString:[newName lowercaseString]]) {
-                [searchResults addObject:bird];
-            }
+        NSManagedObjectContext  *managedContext = ((AppDelegate*) [UIApplication sharedApplication].delegate).managedObjectContext;
+        NSError *fetchError = nil;
+        NSFetchRequest *request = [[NSFetchRequest alloc]initWithEntityName:@"Bird"];
+        NSPredicate *predicate = [NSPredicate predicateWithFormat: @"name contains[cd] %@", newName];
+        [request setPredicate:predicate];
+        
+        NSArray *filteredFromCoreData = [managedContext executeFetchRequest:request error:&fetchError];
+        if (fetchError) {
+            NSLog(@"Error fetching birdies from core data: %@\n%@", [fetchError localizedDescription], [fetchError userInfo]);
+            return;
         }
-        self.searchResults = searchResults;
+        
+        self.searchResults = [filteredFromCoreData mutableCopy];
     }
 }
 

@@ -31,6 +31,11 @@
     UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addCoordinates)];
     self.navigationItem.rightBarButtonItem = addButton;
     
+    UIImageView *scriptLogoView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"scriptLogo"]];
+    scriptLogoView.contentMode = UIViewContentModeScaleAspectFit;
+    scriptLogoView.frame = CGRectMake(0, 0, 30.0, 30.0);
+    self.navigationItem.titleView = scriptLogoView;
+    
     self.http = [HttpData httpData];
     _baseUrl = @"https://protected-falls-94776.herokuapp.com/api/birds/coordinates/";
     

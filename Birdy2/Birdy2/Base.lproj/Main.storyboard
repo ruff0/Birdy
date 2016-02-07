@@ -30,6 +30,7 @@
                                 <animations/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="180" id="e7u-ye-5Sn"/>
+                                    <constraint firstAttribute="height" constant="30" id="nT0-x6-X8C"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -38,21 +39,12 @@
                                 <rect key="frame" x="209" y="122" width="185" height="30"/>
                                 <animations/>
                                 <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="2Ru-PM-R3T"/>
                                     <constraint firstAttribute="width" constant="185" id="J5J-yG-hvp"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="NbD-oT-kCX">
-                                <rect key="frame" x="50" y="178" width="502" height="100"/>
-                                <animations/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="100" id="VcY-3G-0Bz"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zY0-T6-sD7">
                                 <rect key="frame" x="259" y="296" width="85" height="27"/>
                                 <animations/>
@@ -73,6 +65,16 @@
                                     <outletCollection property="gestureRecognizers" destination="KeB-N1-VKR" appends="YES" id="fb1-t0-ukx"/>
                                 </connections>
                             </imageView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="NbD-oT-kCX">
+                                <rect key="frame" x="50" y="178" width="502" height="100"/>
+                                <animations/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="VcY-3G-0Bz"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -274,10 +276,10 @@
             </objects>
             <point key="canvasLocation" x="2255" y="-159"/>
         </scene>
-        <!--Birdy Navigation Controller-->
+        <!--Navigation Controller-->
         <scene sceneID="PJn-pe-2OP">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="dIj-7o-eVJ" customClass="BirdyNavigationController" customModule="Birdy2" customModuleProvider="target" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="dIj-7o-eVJ" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="YGV-ej-4fT">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>

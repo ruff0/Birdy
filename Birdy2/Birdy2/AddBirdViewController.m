@@ -41,6 +41,11 @@
     UIBarButtonItem* addBirdyItem = [[UIBarButtonItem alloc]initWithTitle:@"Done!" style:UIBarButtonItemStyleDone target:self action:@selector(addNewBird)];
     self.navigationItem.rightBarButtonItem = addBirdyItem;
     
+    UIImageView *scriptLogoView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"scriptLogo"]];
+    scriptLogoView.contentMode = UIViewContentModeScaleAspectFit;
+    scriptLogoView.frame = CGRectMake(0, 0, 30.0, 30.0);
+    self.navigationItem.titleView = scriptLogoView;
+    
     _url = @"https://protected-falls-94776.herokuapp.com/api/birds";
     self.http = [HttpData httpData];
     
@@ -230,6 +235,20 @@
     }
 }
 - (IBAction)changePicture:(UILongPressGestureRecognizer *)sender {
+    if (sender.state == UIGestureRecognizerStateBegan) {
+        CGFloat currentScale = self.birdImageView.frame.size.width / self.birdImageView.bounds.size.width;
+        CGFloat newScale = currentScale * 0.8;
+        CGAffineTransform transform = CGAffineTransformMakeScale(newScale, newScale);
+        self.birdImageView.transform = transform;
+    }
+    
+    if (sender.state == UIGestureRecognizerStateEnded) {
+        CGFloat currentScale = self.birdImageView.frame.size.width / self.birdImageView.bounds.size.width;
+        CGFloat newScale = currentScale / 0.8;
+        CGAffineTransform transform = CGAffineTransformMakeScale(newScale, newScale);
+        self.birdImageView.transform = transform;
+    }
+    
     [self addPhotoClick:sender];
 }
 @end

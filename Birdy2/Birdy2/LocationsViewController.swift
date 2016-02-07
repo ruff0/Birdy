@@ -16,6 +16,12 @@ import GoogleMaps
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let logoImage = UIImage(named: "scriptLogo")
+        let scriptLogoView = UIImageView(image:logoImage)
+        scriptLogoView.contentMode = UIViewContentMode.ScaleAspectFit;
+        scriptLogoView.frame = CGRectMake(0, 0, 30.0, 30.0);
+        self.navigationItem.titleView = scriptLogoView;
+        
         let firstPointLat = (self.locations[0].latitude as NSString).doubleValue
         let firstPointLon = (self.locations[0].longitude as NSString).doubleValue
         

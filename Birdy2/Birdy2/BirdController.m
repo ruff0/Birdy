@@ -94,9 +94,7 @@
 
 - (IBAction)birdImagePan:(UIPanGestureRecognizer *)sender {
     UIGestureRecognizerState state = [sender state];
-    
     if (state == UIGestureRecognizerStateBegan || state == UIGestureRecognizerStateChanged) {
-        
         CGPoint translation = [sender translationInView:sender.view];
         CGAffineTransform translate = CGAffineTransformTranslate(sender.view.transform, translation.x, translation.y);
         self.birdImageView.transform = translate;
