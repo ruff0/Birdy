@@ -109,8 +109,8 @@
         return;
     }
     
-    if(self.imageString.length > 2000000) {
-        [self showErrorAlert:@"Bird picture should be with size less than 150kB."];
+    if(self.imageString.length > 400000) {
+        [self showErrorAlert:@"Bird picture should be with size less than 300kB."];
         return;
     }
     

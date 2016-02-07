@@ -279,7 +279,7 @@
         NSDictionary *birdsResults = [dict objectForKey:@"birds"];
         NSDictionary *coordinatesResults = [dict objectForKey:@"coordinates"];
         
-        if (coordinatesResults) {
+        if (coordinatesResults && coordinatesResults.count > 0) {
             NSMutableArray *dataResultCoordinates = [NSMutableArray array];
             for (NSDictionary *dictCoordinate in coordinatesResults){
                 Coordinates *currentCoordinates = [Coordinates coordinatesWithDictAndBirdId: dictCoordinate];
@@ -289,7 +289,7 @@
             [weakSelf saveCoordinatesToCd:dataResultCoordinates];
         }
         
-        if (birdsResults) {
+        if (birdsResults && birdsResults.count > 0) {
             NSMutableArray *dataResultBirds = [NSMutableArray array];
             for (NSDictionary *dictBird in birdsResults){
                 Bird *currentBird = [Bird birdWithDict: dictBird];
@@ -355,6 +355,8 @@
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"yyyy-MM-dd hh:mm:ss"];
     NSString *stringDate = [dateFormatter stringFromDate:[NSDate date]];
+    stringDate = [stringDate stringByReplacingOccurrencesOfString:@" "
+                                         withString:@"T"];
     [plistDict setObject:stringDate forKey:@"oupdatedOn"];
     
     NSString *plistPath = [self getPlistFilePath];

@@ -214,7 +214,7 @@
                                     <action selector="seeLocations:" destination="udC-hB-xS8" eventType="touchUpInside" id="7d4-Tr-Mwh"/>
                                 </connections>
                             </button>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tZL-8b-3nP">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tZL-8b-3nP">
                                 <rect key="frame" x="40" y="339" width="520" height="209"/>
                                 <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
