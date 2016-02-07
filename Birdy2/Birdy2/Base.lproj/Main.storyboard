@@ -274,10 +274,10 @@
             </objects>
             <point key="canvasLocation" x="2255" y="-159"/>
         </scene>
-        <!--Birdy Navigation Controller View Controller-->
+        <!--Birdy Navigation Controller-->
         <scene sceneID="PJn-pe-2OP">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="dIj-7o-eVJ" customClass="BirdyNavigationControllerViewController" customModule="Birdy2" customModuleProvider="target" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="dIj-7o-eVJ" customClass="BirdyNavigationController" customModule="Birdy2" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="YGV-ej-4fT">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>

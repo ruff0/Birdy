@@ -20,7 +20,6 @@
     
     self.data = [[BirdyData alloc]init];
     [GMSServices provideAPIKey:@"AIzaSyD0nPRiwBIvU2m547H1Y9IbxjYpJSs7DG0"];
-    [NSThread sleepForTimeInterval:2.0];
     return YES;
 }
 

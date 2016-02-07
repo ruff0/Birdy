@@ -33,7 +33,12 @@
     [self.loadingIndicator setBackgroundColor:[UIColor colorWithRed:0.5 green:0.5 blue:0.5 alpha:0.5]];
     [self.view addSubview:self.loadingIndicator];
     
-    self.title = @"Birdy list";
+    UIImageView *scriptLogoView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"scriptLogo"]];
+    // 	scriptLogoView.frame.size.height = 50;
+    
+    self.navigationItem.titleView = scriptLogoView;
+    //self.title = @"Birdy list";
+    
     UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(insertNewBird)];
     self.navigationItem.rightBarButtonItem = addButton;
     

@@ -1,11 +1,11 @@
 import UIKit
 
-class BirdyNavigationControllerViewController: UINavigationController {
+class BirdyNavigationController: UINavigationController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let logo = UIImage(named: "scriptLogo.png")
+        let logo = UIImage(named: "scriptLogo")
         let imageView = UIImageView(image:logo)
         self.navigationItem.titleView = imageView
         
