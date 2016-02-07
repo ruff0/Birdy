@@ -12,7 +12,6 @@
 		DA5901411C5E4424002A173F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DA5901401C5E4424002A173F /* AppDelegate.m */; };
 		DA5901471C5E4424002A173F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DA5901451C5E4424002A173F /* Main.storyboard */; };
 		DA5901491C5E4424002A173F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DA5901481C5E4424002A173F /* Assets.xcassets */; };
-		DA59014C1C5E4424002A173F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DA59014A1C5E4424002A173F /* LaunchScreen.storyboard */; };
 		DA5901561C5E44FA002A173F /* BirdsListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DA5901551C5E44FA002A173F /* BirdsListViewController.m */; };
 		DA59015A1C5E4B63002A173F /* Bird.m in Sources */ = {isa = PBXBuildFile; fileRef = DA5901591C5E4B63002A173F /* Bird.m */; };
 		DA5901601C5E7D07002A173F /* AddBirdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DA59015F1C5E7D07002A173F /* AddBirdViewController.m */; };
@@ -28,6 +27,13 @@
 		DAD61FD41C6609E7009CE1E5 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAD61FD21C66098A009CE1E5 /* CoreData.framework */; };
 		DAD61FFD1C660E48009CE1E5 /* BirdyDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = DAD61FFB1C660E48009CE1E5 /* BirdyDataModel.xcdatamodeld */; };
 		DADBA8581C63D14B002DDFFD /* Coordinates.m in Sources */ = {isa = PBXBuildFile; fileRef = DADBA8571C63D14A002DDFFD /* Coordinates.m */; };
+		DAFBD8611C6766A8003D2AED /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DAFBD85C1C6766A8003D2AED /* Default-568h@2x.png */; };
+		DAFBD8621C6766A8003D2AED /* Default-667h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DAFBD85D1C6766A8003D2AED /* Default-667h@2x.png */; };
+		DAFBD8631C6766A8003D2AED /* Default-736h@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = DAFBD85E1C6766A8003D2AED /* Default-736h@3x.png */; };
+		DAFBD8641C6766A8003D2AED /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = DAFBD85F1C6766A8003D2AED /* Default.png */; };
+		DAFBD8651C6766A8003D2AED /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DAFBD8601C6766A8003D2AED /* Default@2x.png */; };
+		DAFBD8671C676795003D2AED /* BirdyLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = DAFBD8661C676795003D2AED /* BirdyLogo.png */; };
+		DAFBD86C1C676EEE003D2AED /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DAFBD86A1C676EEE003D2AED /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,7 +45,6 @@
 		DA5901401C5E4424002A173F /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		DA5901461C5E4424002A173F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		DA5901481C5E4424002A173F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		DA59014B1C5E4424002A173F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DA59014D1C5E4424002A173F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DA5901541C5E44FA002A173F /* BirdsListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BirdsListViewController.h; sourceTree = "<group>"; };
 		DA5901551C5E44FA002A173F /* BirdsListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BirdsListViewController.m; sourceTree = "<group>"; };
@@ -67,6 +72,14 @@
 		DAD61FFC1C660E48009CE1E5 /* BirdyDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = BirdyDataModel.xcdatamodel; sourceTree = "<group>"; };
 		DADBA8561C63D14A002DDFFD /* Coordinates.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Coordinates.h; sourceTree = "<group>"; };
 		DADBA8571C63D14A002DDFFD /* Coordinates.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Coordinates.m; sourceTree = "<group>"; };
+		DAFBD85A1C676613003D2AED /* Birdy App */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "Birdy App"; path = ../..; sourceTree = "<group>"; };
+		DAFBD85C1C6766A8003D2AED /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "../Logos/Default-568h@2x.png"; sourceTree = "<group>"; };
+		DAFBD85D1C6766A8003D2AED /* Default-667h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-667h@2x.png"; path = "../Logos/Default-667h@2x.png"; sourceTree = "<group>"; };
+		DAFBD85E1C6766A8003D2AED /* Default-736h@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-736h@3x.png"; path = "../Logos/Default-736h@3x.png"; sourceTree = "<group>"; };
+		DAFBD85F1C6766A8003D2AED /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Default.png; path = ../Logos/Default.png; sourceTree = "<group>"; };
+		DAFBD8601C6766A8003D2AED /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default@2x.png"; path = "../Logos/Default@2x.png"; sourceTree = "<group>"; };
+		DAFBD8661C676795003D2AED /* BirdyLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = BirdyLogo.png; path = ../../Logos/BirdyLogo.png; sourceTree = "<group>"; };
+		DAFBD86B1C676EEE003D2AED /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DF08D8CAE26CD041944FEF40 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -104,6 +117,12 @@
 		DA5901301C5E4423002A173F = {
 			isa = PBXGroup;
 			children = (
+				DAFBD85C1C6766A8003D2AED /* Default-568h@2x.png */,
+				DAFBD85D1C6766A8003D2AED /* Default-667h@2x.png */,
+				DAFBD85E1C6766A8003D2AED /* Default-736h@3x.png */,
+				DAFBD85F1C6766A8003D2AED /* Default.png */,
+				DAFBD8601C6766A8003D2AED /* Default@2x.png */,
+				DAFBD85A1C676613003D2AED /* Birdy App */,
 				DA59013B1C5E4423002A173F /* Birdy2 */,
 				DA59013A1C5E4423002A173F /* Products */,
 				3CDC688AC046CABE69258E1E /* Pods */,
@@ -122,6 +141,7 @@
 		DA59013B1C5E4423002A173F /* Birdy2 */ = {
 			isa = PBXGroup;
 			children = (
+				DAFBD86A1C676EEE003D2AED /* LaunchScreen.storyboard */,
 				DA5901661C5E9058002A173F /* Views */,
 				DA5901611C5E8011002A173F /* Data */,
 				DA5901571C5E4B42002A173F /* Models */,
@@ -130,7 +150,7 @@
 				DA5901401C5E4424002A173F /* AppDelegate.m */,
 				DA5901451C5E4424002A173F /* Main.storyboard */,
 				DA5901481C5E4424002A173F /* Assets.xcassets */,
-				DA59014A1C5E4424002A173F /* LaunchScreen.storyboard */,
+				DAFBD8661C676795003D2AED /* BirdyLogo.png */,
 				DA59014D1C5E4424002A173F /* Info.plist */,
 				DA59013C1C5E4424002A173F /* Supporting Files */,
 				DAD61FFB1C660E48009CE1E5 /* BirdyDataModel.xcdatamodeld */,
@@ -259,10 +279,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				DAC73DCC1C66485D00EDBBE3 /* LastUpdatedOn.plist in Resources */,
-				DA59014C1C5E4424002A173F /* LaunchScreen.storyboard in Resources */,
 				DA5901681C5E906F002A173F /* CellCustomView.xib in Resources */,
 				DA5901491C5E4424002A173F /* Assets.xcassets in Resources */,
+				DAFBD8651C6766A8003D2AED /* Default@2x.png in Resources */,
+				DAFBD8631C6766A8003D2AED /* Default-736h@3x.png in Resources */,
+				DAFBD8621C6766A8003D2AED /* Default-667h@2x.png in Resources */,
+				DAFBD8611C6766A8003D2AED /* Default-568h@2x.png in Resources */,
 				DA5901471C5E4424002A173F /* Main.storyboard in Resources */,
+				DAFBD8641C6766A8003D2AED /* Default.png in Resources */,
+				DAFBD86C1C676EEE003D2AED /* LaunchScreen.storyboard in Resources */,
+				DAFBD8671C676795003D2AED /* BirdyLogo.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -349,10 +375,10 @@
 			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
-		DA59014A1C5E4424002A173F /* LaunchScreen.storyboard */ = {
+		DAFBD86A1C676EEE003D2AED /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				DA59014B1C5E4424002A173F /* Base */,
+				DAFBD86B1C676EEE003D2AED /* Base */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -446,7 +472,8 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = DF08D8CAE26CD041944FEF40 /* Pods.debug.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-1";
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = Birdy2/Info.plist;
@@ -462,7 +489,8 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 5313CCC04AD79E52CECD23B6 /* Pods.release.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-1";
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = Birdy2/Info.plist;
